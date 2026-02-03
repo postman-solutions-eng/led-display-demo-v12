@@ -11,8 +11,67 @@
       "item": [
         {
           "name": "Display Text",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7d361056-5194-4df9-8817-aeefee201ce5",
+                "exec": [
+                  "const responseData = pm.response.json();",
+                  "",
+                  "// Check if mock_image exists in the response",
+                  "if (responseData.mock_image) {",
+                  "    // Create visualization with base64 image",
+                  "    const template = `",
+                  "        <div style=\"text-align: center; padding: 20px;\">",
+                  "            <h3>LED Display Output</h3>",
+                  "            <img src=\"data:image/png;base64,{{mock_image}}\" alt=\"LED Display\" style=\"max-width: 100%; border: 2px solid #333; border-radius: 8px;\" />",
+                  "            <p style=\"margin-top: 15px;\"><strong>Status:</strong> {{status}}</p>",
+                  "            <p><strong>Text:</strong> {{text}}</p>",
+                  "        </div>",
+                  "    `;",
+                  "    ",
+                  "    pm.visualizer.set(template, {",
+                  "        mock_image: responseData.mock_image,",
+                  "        status: responseData.status,",
+                  "        text: responseData.text",
+                  "    });",
+                  "} else {",
+                  "    // Use LED visualization code when mock_image doesn't exist",
+                  "    const ledViz = pm.require('@automotive-demo/led-viz');",
+                  "    const payload = {",
+                  "        displayText: responseData.text || \"NO DATA\"",
+                  "    };",
+                  "    pm.visualizer.set(ledViz.template, payload);",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {
+                  "@automotive-demo/led-viz": {
+                    "id": "019be0fc-20d1-7647-84f9-d8ed05edc08a"
+                  }
+                },
+                "requests": {}
+              }
+            }
+          ],
           "id": "3a8d7a29-a283-4337-bbbb-e671e4b9d59a",
           "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{vault:openaikey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "X-API-Key",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "POST",
             "header": [
               {
@@ -22,11 +81,16 @@
               {
                 "key": "Accept",
                 "value": "application/json"
+              },
+              {
+                "key": "x-openai-prompt",
+                "value": "A children's book drawing style image representing the text: {text}. Create a simple, colorful, and friendly illustration.",
+                "type": "text"
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"text\": \"Hello World!\"\n}",
+              "raw": "{\n  \"text\": \"Hello World! :star:\"\n}",
               "options": {
                 "raw": {
                   "headerFamily": "json",
@@ -59,6 +123,11 @@
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "key": "X-API-Key",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
                   }
                 ],
                 "body": {
@@ -138,6 +207,11 @@
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "key": "X-API-Key",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
                   }
                 ],
                 "body": {
@@ -213,6 +287,11 @@
                   {
                     "key": "Content-Type",
                     "value": "application/json"
+                  },
+                  {
+                    "key": "X-API-Key",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
                   }
                 ],
                 "body": {
@@ -315,6 +394,11 @@
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "key": "X-API-Key",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
                   }
                 ],
                 "url": {
@@ -346,14 +430,6 @@
                 {
                   "key": "Date",
                   "value": "Mon, 19 Jan 2026 12:20:00 GMT",
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  }
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json",
                   "description": {
                     "content": "",
                     "type": "text/plain"
@@ -429,6 +505,11 @@
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "key": "X-API-Key",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
                   }
                 ],
                 "body": {
@@ -476,14 +557,6 @@
                   }
                 },
                 {
-                  "key": "Content-Type",
-                  "value": "application/json",
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  }
-                },
-                {
                   "key": "Connection",
                   "value": "close",
                   "description": {
@@ -501,9 +574,35 @@
       "id": "87ba44a7-2015-4162-bcef-f8fcb4b2ff8c"
     }
   ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "86d907e3-3898-4892-a1ce-79eea3d4bc9b",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "28c95ad1-c31d-4c9f-8983-4779b3932d8e",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
   "variable": [
     {
-      "id": "35881255-f454-44ca-aabf-05b05ffc6f41",
+      "id": "92fe0529-98ca-4176-b8de-4a990920bbe2",
       "key": "baseUrl",
       "value": "http://127.0.0.1:5001"
     }
