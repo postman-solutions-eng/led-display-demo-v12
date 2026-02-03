@@ -27,5 +27,6 @@ jobs:
         run: |
           for collection in postman/collections/*.json; do
             echo "Running Newman for $collection"
-            newman run "$collection"
+            newman run "$collection" \
+              -e "postman/environments/LED Display Mock Environment.postman_environment.json"
           done
