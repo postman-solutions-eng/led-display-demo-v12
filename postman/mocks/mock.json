@@ -1,0 +1,13 @@
+{
+  "id": "d7d5ffd9-cd31-4388-9517-7e0d0896e5f9",
+  "version": 1,
+  "name": "Final LED Display API Mock",
+  "protocol": "http",
+  "port": 4500,
+  "mockSrc": "./mock.js",
+  "autoRestartOnChange": true,
+  "logging": {
+    "level": "verbose",
+    "showBody": true
+  }
+}
