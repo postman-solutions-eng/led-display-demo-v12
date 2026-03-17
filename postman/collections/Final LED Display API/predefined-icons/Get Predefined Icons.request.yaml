@@ -1,7 +1,0 @@
-$kind: http-request
-url: "{{baseUrl}}/predefined-icons"
-method: GET
-headers:
-  Accept: application/json
-examples: ./.resources/Get Predefined Icons.resources/examples
-order: 1000
