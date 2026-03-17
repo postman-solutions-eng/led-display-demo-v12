@@ -1,0 +1,182 @@
+{
+  "liblabVersion": "2.25.51",
+  "date": "2026-03-17T19:43:47.946Z",
+  "config": {
+    "languages": ["typescript"],
+    "deliveryMethods": ["zip"],
+    "languageOptions": {
+      "python": {
+        "alwaysInitializeOptionals": false,
+        "pypiPackageName": "",
+        "githubRepoName": "",
+        "ignoreFiles": [],
+        "liblabVersion": "2"
+      },
+      "typescript": {
+        "bundle": true,
+        "exportClassDefault": false,
+        "httpClient": "fetch",
+        "npmName": "",
+        "npmOrg": "",
+        "githubRepoName": "",
+        "ignoreFiles": [],
+        "liblabVersion": "2",
+        "generateEnumAs": "union"
+      },
+      "go": {
+        "goModuleName": "github.com/swagger-api/swagger-petstore",
+        "githubRepoName": "",
+        "ignoreFiles": [],
+        "liblabVersion": "2"
+      },
+      "java": {
+        "groupId": "com",
+        "artifactId": "finalleddisplayapisdk",
+        "ignoreFiles": [],
+        "liblabVersion": "2"
+      },
+      "csharp": {
+        "ignoreFiles": [],
+        "liblabVersion": "2",
+        "renameIllegalModelProperties": true,
+        "useOptionalWrapper": true,
+        "validateResponses": false
+      }
+    },
+    "includeWatermark": false,
+    "responseHeaders": false,
+    "sdkName": "final-led-display-api-sdk",
+    "sdkVersion": "1.0.0",
+    "httpClient": "fetch",
+    "bundle": true,
+    "exportClassDefault": false,
+    "npmName": "",
+    "npmOrg": "",
+    "githubRepoName": "",
+    "ignoreFiles": [],
+    "liblabVersion": "2",
+    "generateEnumAs": "union",
+    "language": "typescript",
+    "deliveryMethod": "zip",
+    "hooks": {
+      "enabled": false,
+      "sourceDir": ""
+    },
+    "typescriptVersion": "5.3.3",
+    "zodVersion": "3.22.0",
+    "compilerOptions": {
+      "target": "es6",
+      "module": "Node16",
+      "lib": ["es2018", "dom", "DOM.Iterable"]
+    },
+    "namingStrategy": "base",
+    "usesFormData": false,
+    "authentication": {},
+    "environmentVariables": [],
+    "fileOutput": "/tmp",
+    "inferServiceNames": false,
+    "httpLibrary": {
+      "name": "fetch",
+      "packages": {},
+      "languages": ["typescript"],
+      "types": {
+        "packageName": "@types/isomorphic-fetch",
+        "version": "^0.0.36"
+      }
+    },
+    "auth": [],
+    "retry": {
+      "enabled": true,
+      "maxAttempts": 3,
+      "retryDelay": 150,
+      "maxDelay": 5000,
+      "retryDelayJitter": 50,
+      "backOffFactor": 2,
+      "httpMethodsToRetry": ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"]
+    },
+    "multiTenant": false,
+    "customQueries": {
+      "paths": [],
+      "rawQueries": [],
+      "queriesData": []
+    },
+    "devContainer": false,
+    "ai": false,
+    "includeOptionalSnippetParameters": true,
+    "specType": "openapi",
+    "deprecatedOperations": {
+      "include": true
+    },
+    "multipleResponses": {
+      "enabled": false
+    }
+  },
+  "files": [
+    "package.json",
+    "tsconfig.json",
+    "examples/tsconfig.json",
+    ".gitignore",
+    "scripts/prepublish.sh",
+    ".env.example",
+    "examples/package.json",
+    "examples/README.md",
+    "examples/src/index.ts",
+    "src/http/client.ts",
+    "src/http/types.ts",
+    "src/http/error.ts",
+    "src/http/handlers/terminating-handler.ts",
+    "src/http/handlers/response-validation-handler.ts",
+    "src/http/handlers/request-validation-handler.ts",
+    "src/http/transport/request.ts",
+    "src/http/transport/request-builder.ts",
+    "src/http/transport/request-fetch-adapter.ts",
+    "src/http/transport/transport-hook-adapter.ts",
+    "src/http/errors/throwable-error.ts",
+    "src/http/handlers/retry-handler.ts",
+    "src/services/display-text/models/create-display-text-ok-response.ts",
+    "src/services/display-text/models/create-display-text-request.ts",
+    "src/services/common/error-response.ts",
+    "src/services/predefined-icons/models/get-predefined-icons-ok-response.ts",
+    "src/services/display-summary/models/create-display-summary-ok-response.ts",
+    "src/services/display-summary/models/create-display-summary-request.ts",
+    "documentation/models/CreateDisplayTextOkResponse.md",
+    "documentation/models/CreateDisplayTextRequest.md",
+    "documentation/models/ErrorResponse.md",
+    "documentation/models/GetPredefinedIconsOkResponse.md",
+    "documentation/models/CreateDisplaySummaryOkResponse.md",
+    "documentation/models/CreateDisplaySummaryRequest.md",
+    "src/services/base-service.ts",
+    "src/services/display-text/display-text-service.ts",
+    "src/services/predefined-icons/predefined-icons-service.ts",
+    "src/services/display-summary/display-summary-service.ts",
+    "src/index.ts",
+    "src/services/display-text/models/index.ts",
+    "src/services/predefined-icons/models/index.ts",
+    "src/services/display-summary/models/index.ts",
+    "src/services/common/index.ts",
+    "src/services/display-text/index.ts",
+    "src/services/predefined-icons/index.ts",
+    "src/services/display-summary/index.ts",
+    "src/http/index.ts",
+    "src/http/handlers/handler-chain.ts",
+    "documentation/snippets/snippets.json",
+    "src/http/handlers/hook-handler.ts",
+    "src/http/hooks/custom-hook.ts",
+    "src/http/hooks/hook.ts",
+    "src/http/environment.ts",
+    "src/http/serialization/base-serializer.ts",
+    "src/http/serialization/query-serializer.ts",
+    "src/http/serialization/path-serializer.ts",
+    "src/http/serialization/header-serializer.ts",
+    "src/http/serialization/cookie-serializer.ts",
+    "src/http/transport/types.ts",
+    "src/http/utils/line-decoder.ts",
+    "src/http/utils/response-matcher.ts",
+    "src/http/utils/content-type.ts",
+    "src/http/errors/validation-error.ts",
+    "documentation/services/DisplayTextService.md",
+    "documentation/services/PredefinedIconsService.md",
+    "documentation/services/DisplaySummaryService.md",
+    "README.md"
+  ]
+}

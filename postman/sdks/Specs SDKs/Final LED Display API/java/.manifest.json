@@ -1,0 +1,165 @@
+{
+  "liblabVersion": "2.25.51",
+  "date": "2026-03-17T19:43:48.015Z",
+  "config": {
+    "languages": ["java"],
+    "deliveryMethods": ["zip"],
+    "languageOptions": {
+      "python": {
+        "alwaysInitializeOptionals": false,
+        "pypiPackageName": "",
+        "githubRepoName": "",
+        "ignoreFiles": [],
+        "liblabVersion": "2"
+      },
+      "typescript": {
+        "bundle": true,
+        "exportClassDefault": false,
+        "httpClient": "fetch",
+        "npmName": "",
+        "npmOrg": "",
+        "githubRepoName": "",
+        "ignoreFiles": [],
+        "liblabVersion": "2",
+        "generateEnumAs": "union"
+      },
+      "go": {
+        "goModuleName": "github.com/swagger-api/swagger-petstore",
+        "githubRepoName": "",
+        "ignoreFiles": [],
+        "liblabVersion": "2"
+      },
+      "java": {
+        "groupId": "com",
+        "artifactId": "finalleddisplayapisdk",
+        "ignoreFiles": [],
+        "liblabVersion": "2"
+      },
+      "csharp": {
+        "ignoreFiles": [],
+        "liblabVersion": "2",
+        "renameIllegalModelProperties": true,
+        "useOptionalWrapper": true,
+        "validateResponses": false
+      }
+    },
+    "includeWatermark": false,
+    "responseHeaders": false,
+    "sdkName": "final-led-display-api-sdk",
+    "sdkVersion": "1.0.0",
+    "groupId": "com",
+    "artifactId": "finalleddisplayapisdk",
+    "ignoreFiles": [],
+    "liblabVersion": "2",
+    "language": "java",
+    "deliveryMethod": "zip",
+    "hooks": {
+      "enabled": false,
+      "sourceDir": ""
+    },
+    "usesFormData": false,
+    "authentication": {},
+    "environmentVariables": [],
+    "fileOutput": "/tmp",
+    "inferServiceNames": false,
+    "httpLibrary": {
+      "name": "axios",
+      "packages": {
+        "axios": "^1.13.2"
+      },
+      "languages": ["typescript"]
+    },
+    "auth": [],
+    "retry": {
+      "enabled": true,
+      "maxAttempts": 3,
+      "retryDelay": 150,
+      "maxDelay": 5000,
+      "retryDelayJitter": 50,
+      "backOffFactor": 2,
+      "httpMethodsToRetry": ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"]
+    },
+    "multiTenant": false,
+    "customQueries": {
+      "paths": [],
+      "rawQueries": [],
+      "queriesData": []
+    },
+    "devContainer": false,
+    "ai": false,
+    "includeOptionalSnippetParameters": true,
+    "specType": "openapi",
+    "deprecatedOperations": {
+      "include": true
+    },
+    "multipleResponses": {
+      "enabled": false
+    }
+  },
+  "files": [
+    "pom.xml",
+    ".gitignore",
+    "src/main/java/com/finalleddisplayapisdk/validation/Violation.java",
+    "src/main/java/com/finalleddisplayapisdk/validation/ViolationAggregator.java",
+    "src/main/java/com/finalleddisplayapisdk/validation/validators/AbstractValidator.java",
+    "src/main/java/com/finalleddisplayapisdk/validation/validators/ListValidator.java",
+    "src/main/java/com/finalleddisplayapisdk/validation/validators/NumericValidator.java",
+    "src/main/java/com/finalleddisplayapisdk/validation/validators/StringValidator.java",
+    "src/main/java/com/finalleddisplayapisdk/validation/validators/Validator.java",
+    "src/main/java/com/finalleddisplayapisdk/validation/validators/modelValidators/AbstractModelValidator.java",
+    "src/main/java/com/finalleddisplayapisdk/validation/exceptions/ValidationException.java",
+    "src/main/java/com/finalleddisplayapisdk/services/BaseService.java",
+    "src/main/java/com/finalleddisplayapisdk/http/HttpMethod.java",
+    "src/main/java/com/finalleddisplayapisdk/http/ModelConverter.java",
+    "src/main/java/com/finalleddisplayapisdk/http/util/ContentTypes.java",
+    "src/main/java/com/finalleddisplayapisdk/http/util/HttpArgumentConverter.java",
+    "src/main/java/com/finalleddisplayapisdk/http/serialization/PathSerializationStyle.java",
+    "src/main/java/com/finalleddisplayapisdk/http/serialization/QuerySerializationStyle.java",
+    "src/main/java/com/finalleddisplayapisdk/http/serialization/SerializationStyle.java",
+    "src/main/java/com/finalleddisplayapisdk/http/serialization/Serializer.java",
+    "src/main/java/com/finalleddisplayapisdk/http/serialization/Util.java",
+    "src/main/java/com/finalleddisplayapisdk/http/interceptors/DefaultHeadersInterceptor.java",
+    "src/main/java/com/finalleddisplayapisdk/exceptions/ApiError.java",
+    "src/main/java/com/finalleddisplayapisdk/exceptions/ErrorResponseException.java",
+    "src/main/java/com/finalleddisplayapisdk/http/Environment.java",
+    "src/main/java/com/finalleddisplayapisdk/FinalLedDisplayApiSdk.java",
+    "src/main/java/com/finalleddisplayapisdk/http/interceptors/RetryInterceptor.java",
+    "src/main/java/com/finalleddisplayapisdk/config/RetryConfig.java",
+    "src/main/java/com/finalleddisplayapisdk/config/FinalLedDisplayApiSdkConfig.java",
+    "src/main/java/com/finalleddisplayapisdk/config/RequestConfig.java",
+    "src/main/java/com/finalleddisplayapisdk/config/ApiKeyAuthConfig.java",
+    "documentation/snippets/snippets.json",
+    "documentation/models/CreateDisplayTextOkResponse.md",
+    "documentation/models/CreateDisplayTextRequest.md",
+    "documentation/models/GetPredefinedIconsOkResponse.md",
+    "documentation/models/CreateDisplaySummaryOkResponse.md",
+    "documentation/models/CreateDisplaySummaryRequest.md",
+    "documentation/models/ErrorResponse.md",
+    "src/main/java/com/finalleddisplayapisdk/json/TypeUtils.java",
+    "examples/pom.xml",
+    "examples/run.sh",
+    "examples/src/main/java/com/example/Main.java",
+    "examples/.gitignore",
+    ".idea/workspace.xml",
+    ".idea/misc.xml",
+    ".idea/compiler.xml",
+    ".idea/encoding.xml",
+    ".idea/jarRepositories.xml",
+    "src/main/java/com/finalleddisplayapisdk/http/util/RequestBuilder.java",
+    "examples/README.md",
+    ".env.example",
+    "documentation/services/DisplayTextService.md",
+    "documentation/services/PredefinedIconsService.md",
+    "documentation/services/DisplaySummaryService.md",
+    "src/main/java/com/finalleddisplayapisdk/models/CreateDisplayTextRequest.java",
+    "src/main/java/com/finalleddisplayapisdk/models/GetPredefinedIconsOkResponse.java",
+    "src/main/java/com/finalleddisplayapisdk/models/CreateDisplaySummaryOkResponse.java",
+    "src/main/java/com/finalleddisplayapisdk/models/CreateDisplayTextOkResponse.java",
+    "src/main/java/com/finalleddisplayapisdk/models/CreateDisplaySummaryRequest.java",
+    "src/main/java/com/finalleddisplayapisdk/models/ErrorResponse.java",
+    "src/main/java/com/finalleddisplayapisdk/services/PredefinedIconsService.java",
+    "src/main/java/com/finalleddisplayapisdk/services/DisplayTextService.java",
+    "src/main/java/com/finalleddisplayapisdk/services/DisplaySummaryService.java",
+    "README.md"
+  ]
+}
