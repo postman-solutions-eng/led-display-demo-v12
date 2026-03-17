@@ -1,13 +1,4 @@
 $kind: http-request
-description: >-
-  Tests the /display-text endpoint with various text inputs. Uses iteration data
-  variables:
-
-  - `text`: The text content to display
-
-  - `expectedStatus`: Expected HTTP status code (200 or 400)
-
-  - `testDescription`: Description of the test case
 url: "{{baseUrl}}/display-text"
 method: POST
 headers:

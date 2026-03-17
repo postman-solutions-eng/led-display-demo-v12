@@ -1,0 +1,59 @@
+$kind: collection
+description: >-
+  # Request Chaining Example
+
+
+  This collection demonstrates **request chaining** - a technique where data
+  from one request is captured and used in subsequent requests.
+
+
+  ## How it works
+
+
+  1. **Get Predefined Icons** - Fetches the list of available icons from the API
+  and saves them to a collection variable
+      
+  2. **Display Random Icons** - Retrieves the saved icons, randomly selects 3,
+  and sends them to the display
+      
+
+  ## Key Concepts Demonstrated
+
+
+  - **Post-response scripts**: Parsing response data and storing it in variables
+      
+  - **Pre-request scripts**: Retrieving stored data and transforming it before
+  the request
+      
+  - **Collection variables**: Sharing data between requests in a collection
+      
+  - **Dynamic request bodies**: Using variables to construct request payloads
+      
+
+  ## Running the Collection
+
+
+  Run the requests in order (Get Predefined Icons first, then Display Random
+  Icons) to see the chaining in action.
+
+
+  ## How this collection was created
+
+
+  This collection was created with the following prompt:
+
+
+  Can you create a new collection called "Request Chaining example" that first
+  gets the predefined icons in its first request, then save those to a
+  collection variable and then use that collection variable in the subsequent
+  request to display three random icons from the first request on the LED?
+
+
+  > Can you create a new collection called "Request Chaining example" that first
+  gets the predefined icons in its first request, then save those to a
+  collection variable and then use that collection variable in the subsequent
+  request to display three random icons from the first request on the LED? Use
+  the @"Final LED Display API" as reference collection for the needed requests
+variables:
+  availableIcons: ""
+  displayText: ""

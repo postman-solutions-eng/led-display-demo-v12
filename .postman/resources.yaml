@@ -7,6 +7,9 @@ cloudResources:
   collections:
     ../postman/collections/LED Display API - Data File Test Suite: 53180818-86a68236-b5a6-4aac-9dca-795a969a9392
     ../postman/collections/Final LED Display API: 53180818-ee8ad1ac-8e16-41b4-8412-656df1e79daa
+    ../postman/collections/Barebones LED Display API: 879fbc45-6866-4487-a369-5588a04d9c59
+    ../postman/collections/Request Chaining Example: 83213370-ad08-4d80-91d8-c034345d748e
+    ../postman/collections/Mock Answers LED Display API: a9b8f812-e5e8-4bbb-850d-c6a4da82063f
   environments:
     ../postman/environments/LED Display Mock Environment.environment.yaml: 53180818-b57f7bf6-e6ed-4568-86c2-bd6df6cfd3c4
     ../postman/environments/LED Display Localhost.environment.yaml: 53180818-f617756c-9ee9-4240-b856-2ff529a6928c

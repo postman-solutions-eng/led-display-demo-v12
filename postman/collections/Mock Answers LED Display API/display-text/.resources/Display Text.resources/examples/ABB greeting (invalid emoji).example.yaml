@@ -1,0 +1,25 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/display-text"
+  method: POST
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "text": "Hello ABB 🌍"
+      }
+response:
+  statusCode: 400
+  statusText: Bad Request
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "status": "error",
+        "message": "Unsupported character(s) in text"
+      }
+order: 52000
