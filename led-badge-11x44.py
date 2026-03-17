@@ -1,3 +1,0 @@
-import lednamebadge
-
-lednamebadge.main()
