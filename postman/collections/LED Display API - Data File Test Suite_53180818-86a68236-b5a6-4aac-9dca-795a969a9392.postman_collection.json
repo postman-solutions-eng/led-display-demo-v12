@@ -1,0 +1,61 @@
+{
+  "info": {
+    "_postman_id": "86a68236-b5a6-4aac-9dca-795a969a9392",
+    "name": "LED Display API - Data File Test Suite",
+    "description": "Test suite for the /display-text endpoint covering various scenarios including valid messages with icons, invalid Unicode characters, edge cases, and special characters.\n\nThis test suite was generated with the following prompt:\n\n> \"Can you create a new collection and data file that mixes allowed messages with allowed icons and invalid messages and test whether the expected results occur?\"",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Display Text Test",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Get expected values from iteration data\nconst expectedStatus = parseInt(pm.iterationData.get('expectedStatus') || pm.variables.get('expectedStatus'));\nconst testDescription = pm.iterationData.get('testDescription') || pm.variables.get('testDescription') || 'Display Text Test';\n\n// Test 1: Validate status code matches expected\npm.test(`${testDescription}: Status code is ${expectedStatus}`, function () {\n    pm.response.to.have.status(expectedStatus);\n});\n\n// Test 2: Validate response structure\npm.test(`${testDescription}: Response has valid JSON structure`, function () {\n    pm.response.to.be.json;\n    const jsonData = pm.response.json();\n    pm.expect(jsonData).to.be.an('object');\n});\n\n// Test 3: Conditional validation based on expected status\nif (expectedStatus === 200) {\n    // For successful requests, verify success indicators\n    pm.test(`${testDescription}: Response contains success indicators`, function () {\n        const jsonData = pm.response.json();\n        // Check for common success indicators\n        const hasSuccessIndicator = \n            jsonData.success === true || \n            jsonData.status === 'success' ||\n            jsonData.message !== undefined ||\n            jsonData.text !== undefined;\n        pm.expect(hasSuccessIndicator).to.be.true;\n    });\n} else if (expectedStatus === 400) {\n    // For failed requests, verify error message is present\n    pm.test(`${testDescription}: Response contains error message`, function () {\n        const jsonData = pm.response.json();\n        const hasErrorIndicator = \n            jsonData.error !== undefined || \n            jsonData.message !== undefined ||\n            jsonData.detail !== undefined;\n        pm.expect(hasErrorIndicator).to.be.true;\n    });\n}"
+            ]
+          },
+          "disabled": false
+        }
+      ],
+      "id": "c748a4e6-8570-44b9-a3fc-659d02664ba6",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"{{text}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "text"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/display-text",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "display-text"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:5001",
+      "type": "string"
+    }
+  ]
+}

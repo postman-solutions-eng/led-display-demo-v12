@@ -1,0 +1,524 @@
+{
+  "info": {
+    "_postman_id": "ee8ad1ac-8e16-41b4-8412-656df1e79daa",
+    "name": "Final LED Display API",
+    "description": "# API for controlling LED name badge displays\n\nThis API allows you to update the text and visual content displayed on LED badges, including support for alphanumeric text and predefined icon codes.\n\n## Supported Icons\n\nThe following icon codes can be embedded in text using the `:icon_name:` syntax:\n\n- `:ball:` - Filled circle\n    \n- `:happy:` - Simple smiley face\n    \n- `:happy2:` - Larger smiley (2 columns wide)\n    \n- `:heart:` - Outline heart\n    \n- `:HEART:` - Filled heart\n    \n- `:heart2:` - Larger outline heart (2 columns wide)\n    \n- `:HEART2:` - Larger filled heart (2 columns wide)\n    \n- `:fablab:` - FabLab logo\n    \n- `:bicycle:` - Bicycle icon (3 columns wide)\n    \n- `:bicycle_r:` - Bicycle facing right (3 columns wide)\n    \n- `:owncloud:` - OwnCloud logo (3 columns wide)\n    \n- `:octocat:` - GitHub Octocat\n    \n- `:smile:` - Smile emoji\n    \n- `:star:` - Star icon\n    \n- `:sun:` - Sun icon\n    \n\n## Character Restrictions\n\n**Supported characters:**\n\n- Letters: A-Z, a-z\n    \n- Numbers: 0-9\n    \n- Special characters: `^ !\"$%&/()=?` °}\\]\\[{@ \\~ |<>,;.:-_#'+_\\`\n    \n- German umlauts: äöüÄÖÜß\n    \n- French/European accents: àäòöùüèéêëôöûîïÿçÀÅÄÉÈÊËÖÔÜÛÙŸŠ\n    \n\n**NOT supported:**\n\n- Unicode emoji (e.g., 🌍) - will return a 400 error\n    \n\n**Escape sequences:**\n\n- `::` - Escapes to a single literal colon\n    \n\n**Custom images:**\n\n- Use `:path/to/image.png:` syntax to reference custom images\n    \n- Images must be exactly 11 pixels high\n    \n\n## Additional Capabilities (not exposed in API yet)\n\n- **Brightness control:** 25%, 50%, 75%, 100%\n    \n- **Animation modes:** 0-8 (various scroll and display effects)\n    \n- **Speed control:** 1-8 (animation speed)\n    \n- **Blink effect:** Enable/disable blinking\n    \n- **Ant effect:** Marching border animation\n    \n\n## How the spec was created\n\nThis spec was created by having analyzed the backend Python code with Postman Agent mode with the following prompt:\n\n> The spec and the Postman collection both seem very incomplete, not containing all possible icons and other character restrictions. Can you scan the backend API code to find out what additional endpoints and capabilities regarding icons and character restrictions there are and update the spec accordingly?",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "display-text",
+      "item": [
+        {
+          "name": "Display Text",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const responseData = pm.response.json();\n\n// Check if mock_image exists in the response\nif (responseData.mock_image) {\n    // Create visualization with base64 image\n    const template = `\n        <div style=\"text-align: center; padding: 20px;\">\n            <h3>LED Display Output</h3>\n            <img src=\"data:image/png;base64,{{mock_image}}\" alt=\"LED Display\" style=\"max-width: 100%; border: 2px solid #333; border-radius: 8px;\" />\n            <p style=\"margin-top: 15px;\"><strong>Status:</strong> {{status}}</p>\n            <p><strong>Text:</strong> {{text}}</p>\n        </div>\n    `;\n    \n    pm.visualizer.set(template, {\n        mock_image: responseData.mock_image,\n        status: responseData.status,\n        text: responseData.text\n    });\n} else {\n    // Use LED visualization code when mock_image doesn't exist\n    const ledViz = pm.require('@automotive-demo/led-viz');\n    const payload = {\n        displayText: responseData.text || \"NO DATA\"\n    };\n    pm.visualizer.set(ledViz.template, payload);\n}"
+                ],
+                "packages": {
+                  "@automotive-demo/led-viz": {
+                    "id": "019be0fc-20d1-7647-84f9-d8ed05edc08a"
+                  }
+                }
+              },
+              "disabled": false
+            }
+          ],
+          "id": "20fc8ada-9ae4-4c65-9633-78fbd8ad7e84",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "{{vault:openaikey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "X-API-Key",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "x-openai-prompt",
+                "value": "A children's book drawing style image representing the text: {text}. Create a simple, colorful, and friendly illustration."
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Hello World! :star:\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/display-text",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "display-text"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ec89c83f-8e3e-441f-b245-0f5a3a97082e",
+              "name": "Success with Text + Heart Icon",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-API-Key",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"Hello World!\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Server",
+                  "value": "Werkzeug/3.1.5 Python/3.13.7",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 12:16:21 GMT",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "65",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Connection",
+                  "value": "close",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"Text displayed on LED\",\n  \"text\": \"Hello World! :heart:\"\n}"
+            },
+            {
+              "id": "e5d891ec-5fb6-44e8-8cdc-f2b781a3c1f3",
+              "name": "Failure HTML Response (Unicode)?",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-API-Key",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"Hello World!\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Server",
+                  "value": "Werkzeug/3.1.4 Python/3.13.5",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 12:47:31 GMT",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "69",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Connection",
+                  "value": "close",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"details\": \"'🌍'\",\n  \"error\": \"Invalid display string format\"\n}"
+            },
+            {
+              "id": "c2bd0ff8-adbc-4d29-8b90-b30c6c85a223",
+              "name": "Error when not started with right permissions",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-API-Key",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"Hello World!\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "Werkzeug/3.1.4 Python/3.13.5",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 12:16:58 GMT",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "265",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Connection",
+                  "value": "close",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        }
+      ],
+      "id": "bf4599d7-aeee-4f5c-a4e0-a2f250c09719"
+    },
+    {
+      "name": "predefined-icons",
+      "item": [
+        {
+          "name": "Get Predefined Icons",
+          "id": "ee8c7fa0-add5-49dc-b447-0e0956825e6f",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/predefined-icons",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "predefined-icons"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b2d2e91e-c219-4e60-b3f4-a2b0f25e0c46",
+              "name": "List of all available icon codes",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-API-Key",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/predefined-icons",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "predefined-icons"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Server",
+                  "value": "Werkzeug/3.1.5 Python/3.13.7",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 12:20:00 GMT",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Connection",
+                  "value": "close",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"icons\": [\n    \":ball:\",\n    \":happy:\",\n    \":happy2:\",\n    \":heart:\",\n    \":HEART:\",\n    \":heart2:\",\n    \":HEART2:\",\n    \":fablab:\",\n    \":bicycle:\",\n    \":bicycle_r:\",\n    \":owncloud:\",\n    \":octocat:\",\n    \":smile:\",\n    \":star:\",\n    \":sun:\"\n  ]\n}"
+            }
+          ]
+        }
+      ],
+      "id": "aa176c23-1911-4974-8e6a-b35de1099215"
+    },
+    {
+      "name": "display-summary",
+      "item": [
+        {
+          "name": "Display Summary",
+          "id": "aa85551d-5fc8-4337-aa85-2120a9395f57",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"welcome\",\n  \"customText\": \"John\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/display-summary",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "display-summary"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "da49de4c-3763-446a-b2ad-b9c9f49a2a7c",
+              "name": "Summary message displayed successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-API-Key",
+                    "value": "<API Key>",
+                    "description": "Added as a part of security scheme: apikey"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"welcome\",\n  \"customText\": \"John\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-summary",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-summary"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Server",
+                  "value": "Werkzeug/3.1.5 Python/3.13.7",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 12:25:00 GMT",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Connection",
+                  "value": "close",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"Summary displayed on LED\"\n}"
+            }
+          ]
+        }
+      ],
+      "id": "f8c23278-8a33-4ea1-86bc-33aee9a75b6f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:5001",
+      "type": "string"
+    }
+  ]
+}
