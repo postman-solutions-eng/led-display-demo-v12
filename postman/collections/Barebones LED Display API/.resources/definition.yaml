@@ -1,0 +1,7 @@
+$kind: collection
+description: |-
+  API for controlling LED name badge displays. This API allows you to update the text and visual content displayed on LED badges, including support for alphanumeric text and predefined icon codes. All capabilities and specific characters allowed still need to be figured out.
+
+  <img src="https://content.pstmn.io/05b1ef2c-9fd3-4f0e-8b2f-76998fb3f6e5/aW1hZ2UucG5n" width="240">
+variables:
+  baseUrl: http://127.0.0.1:5001

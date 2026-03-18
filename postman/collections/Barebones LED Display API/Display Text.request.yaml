@@ -1,0 +1,16 @@
+$kind: http-request
+url: "{{baseUrl}}/display-text"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "text": "Hello World! :HEART2:"
+    }
+auth:
+  type: noauth
+examples: ./.resources/Display Text.resources/examples
+order: 1000
