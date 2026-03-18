@@ -3,7 +3,7 @@ name: Run Postman Collection
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ msc ]
 
 jobs:
   postman-run:
