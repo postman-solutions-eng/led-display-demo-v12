@@ -3,7 +3,7 @@ name: Automated API tests using Postman CLI
 on: push
 
 jobs:
-  automated-linting-of-spec:
+  automated-api-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -11,7 +11,7 @@ jobs:
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
       - name: Login to Postman CLI
-        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
-      - name: Validate Spec
+        run: postman login --with-api-key ${{ secrets.POSTMAN_KEY }}
+      - name: Run API tests
         run: |
-          postman spec lint postman/specs/Final\ LED\ Display\ API/index.yaml --fail-severity error
+          postman collection run 53180818-ee8ad1ac-8e16-41b4-8412-656df1e79daa -e 53180818-b57f7bf6-e6ed-4568-86c2-bd6df6cfd3c4
