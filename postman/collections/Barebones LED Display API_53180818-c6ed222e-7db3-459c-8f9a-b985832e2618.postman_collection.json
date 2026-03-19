@@ -1,0 +1,294 @@
+{
+  "info": {
+    "_postman_id": "c6ed222e-7db3-459c-8f9a-b985832e2618",
+    "name": "Barebones LED Display API",
+    "description": "API for controlling LED name badge displays. This API allows you to update the text and visual content displayed on LED badges, including support for alphanumeric text and predefined icon codes. All capabilities and specific characters allowed still need to be figured out.\n\n<img src=\"https://content.pstmn.io/05b1ef2c-9fd3-4f0e-8b2f-76998fb3f6e5/aW1hZ2UucG5n\" width=\"240\">",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Display Text",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "6aa93e1e-e62e-4ced-8a73-91fb109dd459",
+            "exec": [
+              "const genericTests = pm.require('@postman-italy-769381/generic-tests');"
+            ],
+            "type": "text/javascript",
+            "packages": {
+              "@postman-italy-769381/generic-tests": {
+                "id": "019d02b0-e334-7719-a6c4-d7a4801f02e2"
+              }
+            },
+            "requests": {}
+          }
+        }
+      ],
+      "id": "023aa597-208e-4211-9bb6-fd5498e18f43",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Hello World! :HEART2:\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/display-text",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "display-text"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "ac9e2378-40e9-45bb-855b-8a0c8d6c3f95",
+          "name": "Success with Text + Heart Icon",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Hello World! :heart:\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/display-text",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "display-text"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.5 Python/3.13.7",
+              "disabled": false,
+              "description": ""
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 19 Jan 2026 12:16:21 GMT",
+              "disabled": false,
+              "description": ""
+            },
+            {
+              "key": "Content-Length",
+              "value": "65",
+              "disabled": false,
+              "description": ""
+            },
+            {
+              "key": "Connection",
+              "value": "close",
+              "disabled": false,
+              "description": ""
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "disabled": false,
+              "description": ""
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "{\n    \"status\": \"Text displayed on LED\",\n    \"text\": \"Hello World! :heart:\"\n}"
+        },
+        {
+          "id": "f1e704f7-6f2e-4423-ad79-1b6b8bd4c8a6",
+          "name": "Failure HTML Response (Unicode)?",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Hello World! 🌍\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/display-text",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "display-text"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "disabled": false,
+              "description": ""
+            },
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.4 Python/3.13.5",
+              "disabled": false,
+              "description": ""
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 19 Jan 2026 12:47:31 GMT",
+              "disabled": false,
+              "description": ""
+            },
+            {
+              "key": "Content-Length",
+              "value": "69",
+              "disabled": false,
+              "description": ""
+            },
+            {
+              "key": "Connection",
+              "value": "close",
+              "disabled": false,
+              "description": ""
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "{\n  \"details\": \"'🌍'\",\n  \"error\": \"Invalid display string format\"\n}"
+        },
+        {
+          "id": "d29b7de0-29f1-4085-a511-23501ffee3ca",
+          "name": "Error when not started with right permissions",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Hello World!\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/display-text",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "display-text"
+              ]
+            }
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.4 Python/3.13.5",
+              "disabled": false,
+              "description": ""
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 19 Jan 2026 12:16:58 GMT",
+              "disabled": false,
+              "description": ""
+            },
+            {
+              "key": "Content-Length",
+              "value": "265",
+              "disabled": false,
+              "description": ""
+            },
+            {
+              "key": "Connection",
+              "value": "close",
+              "disabled": false,
+              "description": ""
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/html; charset=utf-8",
+              "disabled": false,
+              "description": ""
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "<!doctype html><html lang=en><title>500 Internal Server Error</title><h1>Internal Server Error</h1><p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>"
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:5001",
+      "type": "string"
+    }
+  ]
+}

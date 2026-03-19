@@ -1,0 +1,96 @@
+{
+  "info": {
+    "_postman_id": "7f2e0572-ba71-4cfc-81a7-a6b3ada0636c",
+    "name": "Request Chaining Example",
+    "description": "# Request Chaining Example\n\nThis collection demonstrates **request chaining** - a technique where data from one request is captured and used in subsequent requests.\n\n## How it works\n\n1. **Get Predefined Icons** - Fetches the list of available icons from the API and saves them to a collection variable\n    \n2. **Display Random Icons** - Retrieves the saved icons, randomly selects 3, and sends them to the display\n    \n\n## Key Concepts Demonstrated\n\n- **Post-response scripts**: Parsing response data and storing it in variables\n    \n- **Pre-request scripts**: Retrieving stored data and transforming it before the request\n    \n- **Collection variables**: Sharing data between requests in a collection\n    \n- **Dynamic request bodies**: Using variables to construct request payloads\n    \n\n## Running the Collection\n\nRun the requests in order (Get Predefined Icons first, then Display Random Icons) to see the chaining in action.\n\n## How this collection was created\n\nThis collection was created with the following prompt:\n\nCan you create a new collection called \"Request Chaining example\" that first gets the predefined icons in its first request, then save those to a collection variable and then use that collection variable in the subsequent request to display three random icons from the first request on the LED?\n\n> Can you create a new collection called \"Request Chaining example\" that first gets the predefined icons in its first request, then save those to a collection variable and then use that collection variable in the subsequent request to display three random icons from the first request on the LED? Use the @\"Final LED Display API\" as reference collection for the needed requests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Predefined Icons",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Parse the response JSON to get the icons array\nconst responseData = pm.response.json();\nconst icons = responseData.icons;\n\n// Save the icons array to a collection variable\npm.collectionVariables.set(\"availableIcons\", JSON.stringify(icons));\n\n// Log the saved icons for verification\nconsole.log(\"Saved icons to collection variable 'availableIcons':\");\nconsole.log(icons);"
+            ]
+          },
+          "disabled": false
+        }
+      ],
+      "id": "9e4b2325-1fbd-4894-b986-47b2444d7596",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/predefined-icons",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "predefined-icons"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Display Random Icons",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Retrieve the availableIcons collection variable\nconst iconsJson = pm.collectionVariables.get(\"availableIcons\");\nconst icons = JSON.parse(iconsJson);\n\n// Function to get random items from an array\nfunction getRandomItems(arr, count) {\n    const shuffled = [...arr].sort(() => 0.5 - Math.random());\n    return shuffled.slice(0, count);\n}\n\n// Select 3 random icons from the array\nconst randomIcons = getRandomItems(icons, 3);\n\n// Join the icons with spaces - they already have colons in their names\nconst displayText = randomIcons.join(\" \");\n\n// Save this text to a collection variable called \"displayText\"\npm.collectionVariables.set(\"displayText\", displayText);\n\n// Log for verification\nconsole.log(\"Selected random icons:\", randomIcons);\nconsole.log(\"Display text:\", displayText);"
+            ]
+          },
+          "disabled": false
+        }
+      ],
+      "id": "071c7e51-8fb8-4d36-aa8f-c1964047d626",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"{{displayText}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "text"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/display-text",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "display-text"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "availableIcons",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "displayText",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

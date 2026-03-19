@@ -1,0 +1,2680 @@
+{
+  "info": {
+    "_postman_id": "2745600d-6907-4674-826e-339c1ad1cfa3",
+    "name": "Mock Answers LED Display API",
+    "description": "# API for controlling LED name badge displays\n\nThis API allows you to update the text and visual content displayed on LED badges, including support for alphanumeric text and predefined icon codes.\n\n## Supported Icons\n\nThe following icon codes can be embedded in text using the `:icon_name:` syntax:\n\n- `:ball:` - Filled circle\n    \n- `:happy:` - Simple smiley face\n    \n- `:happy2:` - Larger smiley (2 columns wide)\n    \n- `:heart:` - Outline heart\n    \n- `:HEART:` - Filled heart\n    \n- `:heart2:` - Larger outline heart (2 columns wide)\n    \n- `:HEART2:` - Larger filled heart (2 columns wide)\n    \n- `:fablab:` - FabLab logo\n    \n- `:bicycle:` - Bicycle icon (3 columns wide)\n    \n- `:bicycle_r:` - Bicycle facing right (3 columns wide)\n    \n- `:owncloud:` - OwnCloud logo (3 columns wide)\n    \n- `:octocat:` - GitHub Octocat\n    \n- `:smile:` - Smile emoji\n    \n- `:star:` - Star icon\n    \n- `:sun:` - Sun icon\n    \n\n## Character Restrictions\n\n**Supported characters:**\n\n- Letters: A-Z, a-z\n    \n- Numbers: 0-9\n    \n- Special characters: `^ !\"$%&/()=?` °}\\]\\[{@ \\~ |<>,;.:-_#'+_\\`\n    \n- German umlauts: äöüÄÖÜß\n    \n- French/European accents: àäòöùüèéêëôöûîïÿçÀÅÄÉÈÊËÖÔÜÛÙŸŠ\n    \n\n**NOT supported:**\n\n- Unicode emoji (e.g., 🌍) - will return a 400 error\n    \n\n## Adding more examples\n\nTry this prompt in agent mode:\n\n> Can you add two examples to the data file @\"data-file.csv\" - one succeeding and one failing, that is greeting company Uber with valid characters on the LED and once with invalid ones - also add the samples to our mock server in @\"Mock Answers LED Display API\"",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "display-text",
+      "item": [
+        {
+          "name": "Display Text",
+          "id": "430ba09b-9ed8-4b3e-af7a-670a90f31a2c",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Hello World!\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/display-text",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "display-text"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d7819957-7c8d-44ed-a6be-d985cf88e0cb",
+              "name": "Success with Text + Heart Icon",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"Hello World!\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Server",
+                  "value": "Werkzeug/3.1.5 Python/3.13.7",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 12:16:21 GMT",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "65",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Connection",
+                  "value": "close",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"Text displayed on LED\",\n  \"text\": \"Hello World! :heart:\"\n}"
+            },
+            {
+              "id": "f3069dea-7b1d-4018-94f8-1c89617eecd5",
+              "name": "Failure HTML Response (Unicode)?",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"Hello World!\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Server",
+                  "value": "Werkzeug/3.1.4 Python/3.13.5",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 12:47:31 GMT",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "69",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Connection",
+                  "value": "close",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"details\": \"'🌍'\",\n  \"error\": \"Invalid display string format\"\n}"
+            },
+            {
+              "id": "afcf547d-ac3a-4156-ac50-73e70778b8fa",
+              "name": "Error when not started with right permissions",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"Hello World!\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "Werkzeug/3.1.4 Python/3.13.5",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 12:16:58 GMT",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "265",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Connection",
+                  "value": "close",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            },
+            {
+              "id": "7080ce43-2406-4a2f-b74e-64a6851edf70",
+              "name": "Success - Text with Valid Icons",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"I :heart: Postman :smile: You're a :star:\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": true,\n  \"message\": \"Display updated successfully\",\n  \"displayedText\": \"I :heart: Postman :smile: You're a :star:\"\n}"
+            },
+            {
+              "id": "026cd853-e648-4d84-8c63-89daec86e4f3",
+              "name": "Error - Unicode Emoji Not Supported",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Hello 🌍 World\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": false,\n  \"error\": \"Invalid characters detected\",\n  \"message\": \"Unicode emoji are not supported. Please use predefined icon codes like :heart:, :smile:, :star: instead.\",\n  \"invalidText\": \"Hello 🌍 World\"\n}"
+            },
+            {
+              "id": "07c43431-2f4a-4059-979b-a852b67a3808",
+              "name": "Success - Simple Text",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Hello World\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": true,\n  \"message\": \"Display updated successfully\",\n  \"displayedText\": \"Hello World\"\n}"
+            },
+            {
+              "id": "33372136-9085-4994-ba7d-2ac2c4ee6b41",
+              "name": "Error - Multiple Unicode Emoji",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"🎉🎊🎈\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": false,\n  \"error\": \"Invalid characters detected\",\n  \"message\": \"Unicode emoji are not supported. Please use predefined icon codes like :heart:, :smile:, :star: instead.\",\n  \"invalidText\": \"🎉🎊🎈\"\n}"
+            },
+            {
+              "id": "80d5bd54-901b-4b5b-ab43-ca6404aea0a8",
+              "name": "Success - German Umlauts",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Grüße aus München\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": true,\n  \"message\": \"Display updated successfully\",\n  \"displayedText\": \"Grüße aus München\"\n}"
+            },
+            {
+              "id": "2e44a467-bc97-44c0-ba10-a1041de4547f",
+              "name": "Error - Mixed Valid Text with Emoji",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Party 🎉 Time\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": false,\n  \"error\": \"Invalid characters detected\",\n  \"message\": \"Unicode emoji are not supported. Please use predefined icon codes like :heart:, :smile:, :star: instead.\",\n  \"invalidText\": \"Party 🎉 Time\"\n}"
+            },
+            {
+              "id": "7a42bc41-afc6-4d23-80f0-c3af69394c74",
+              "name": "Success - Empty Text",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": true,\n  \"message\": \"Display updated successfully\",\n  \"displayedText\": \"\"\n}"
+            },
+            {
+              "id": "84d1e34e-8bf0-492f-a8ac-cff52f4052ac",
+              "name": "Success - Numbers and Text",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"12345 Numbers Only 67890\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": true,\n  \"message\": \"Display updated successfully\",\n  \"displayedText\": \"12345 Numbers Only 67890\"\n}"
+            },
+            {
+              "id": "9d2f3afe-91e9-4514-b37d-91ceaca49295",
+              "name": "Error - Invalid Icon Code",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \":invalid: icon code\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": false,\n  \"error\": \"Invalid icon code\",\n  \"message\": \"The icon code ':invalid:' is not recognized. Please use valid icon codes like :heart:, :smile:, :star:, :ball:, :sun:, etc.\",\n  \"invalidIconCode\": \":invalid:\"\n}"
+            },
+            {
+              "id": "a5d42624-1684-418d-a69c-a75102be5190",
+              "name": "Error - Unicode Heart Emoji",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"I ❤️ you\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": false, \"error\": \"Unicode emoji not supported. Please use icon codes like :heart: instead.\"}"
+            },
+            {
+              "id": "9cdbe474-81d6-4d69-80fa-a42c5e8654a8",
+              "name": "Error - Unicode Smiley Emoji",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Happy 😊 Day\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": false, \"error\": \"Unicode emoji not supported. Please use icon codes like :smile: instead.\"}"
+            },
+            {
+              "id": "6ebdecf8-8c92-4426-98cc-c0eef571a316",
+              "name": "Error - Invalid Icon Code",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \":invalid: icon\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": false, \"error\": \"Invalid icon code ':invalid:'. Supported icons: :heart:, :smile:, :star:, :ball:, :sun:\"}"
+            },
+            {
+              "id": "eed50587-8dc0-49ab-aa9f-2b7d9b339f84",
+              "name": "Error - Mixed Valid Icon with Unicode Emoji",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Test :heart: with 🎉 mixed\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": false, \"error\": \"Unicode emoji not supported. Please use icon codes instead of emoji characters.\"}"
+            },
+            {
+              "id": "33a9680d-69aa-42f7-a037-cca2303625f3",
+              "name": "Multiple valid icon codes",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \":ball: :sun: :heart: :smile: :star:\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \":ball: :sun: :heart: :smile: :star:\"}"
+            },
+            {
+              "id": "1ac20dde-74cf-42ed-a690-dcd9cc32cc3d",
+              "name": "Text with star icon at end",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"You're a :star:\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"You're a :star:\"}"
+            },
+            {
+              "id": "f5df72cb-e7bb-4203-a736-91484bb5a121",
+              "name": "Text with smile icon code",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Happy :smile: Day\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"Happy :smile: Day\"}"
+            },
+            {
+              "id": "28643e18-b485-438b-b8f6-1948ff42b25d",
+              "name": "Text with heart icon code",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"I :heart: Postman\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"I :heart: Postman\"}"
+            },
+            {
+              "id": "20a8b7ab-a850-4fa8-88a2-ac4fec5ac95f",
+              "name": "Multiple valid icon codes",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \":ball: :sun: :heart: :smile: :star:\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \":ball: :sun: :heart: :smile: :star:\"}"
+            },
+            {
+              "id": "c0f7ffc6-9b05-49e0-9ab0-d1c2d9fa8571",
+              "name": "Text with star icon at end",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"You're a :star:\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"You're a :star:\"}"
+            },
+            {
+              "id": "aa24c40a-3d50-4df7-ab01-a56fb9d76499",
+              "name": "Text with smile icon code",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Happy :smile: Day\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"Happy :smile: Day\"}"
+            },
+            {
+              "id": "2b976dcc-8453-4c36-b785-8ecc2946536c",
+              "name": "Text with heart icon code",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"I :heart: Postman\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"I :heart: Postman\"}"
+            },
+            {
+              "id": "e3acba77-8aaa-4f6f-819b-af9941316331",
+              "name": "Simple text message with no special characters",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Hello World\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"Hello World\"}"
+            },
+            {
+              "id": "2e73a6ef-d17a-4ca5-9b2c-4b00229bcb29",
+              "name": "Mixed text and multiple icons",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Hello :heart: World :smile: Everyone\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"Hello :heart: World :smile: Everyone\"}"
+            },
+            {
+              "id": "dabce75c-1a89-4bf6-9db0-631753e81330",
+              "name": "Text with escaped colon sequence",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Time is 12::30\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"Time is 12::30\"}"
+            },
+            {
+              "id": "b9eb6329-5ef0-4703-9062-cf6fb7ce6742",
+              "name": "French text with accents",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Café à Paris\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"Café à Paris\"}"
+            },
+            {
+              "id": "9dbe158b-af87-4340-bfca-a0807371deea",
+              "name": "German text with umlauts",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Grüße aus München\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"Grüße aus München\"}"
+            },
+            {
+              "id": "3860d30b-c770-4f48-8139-880f53d128ef",
+              "name": "Text with supported special characters",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Test!@#$%&/()=?\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"Test!@#$%&/()=?\"}"
+            },
+            {
+              "id": "cf21e077-5b2a-4951-b630-f61b63fc8eeb",
+              "name": "Invalid Unicode emoji - globe",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Hello 🌍 World\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": false, \"error\": \"Invalid input detected\"}"
+            },
+            {
+              "id": "9bbff6d9-5da5-42ef-9a56-fbb9109283d5",
+              "name": "Very long text message (200+ characters)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"The quick brown fox jumps over the lazy dog. This is a longer message to test the LED display with more content. It includes multiple sentences and should still work fine with the API endpoint.\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"The quick brown fox jumps over the lazy dog. This is a longer message to test the LED display with more content. It includes multiple sentences and should still work fine with the API endpoint.\"}"
+            },
+            {
+              "id": "38bd54ff-8463-4d93-aa07-747706f5370c",
+              "name": "Multiple icons with no spaces",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \":heart::smile::star::ball::sun:\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \":heart::smile::star::ball::sun:\"}"
+            },
+            {
+              "id": "55ea1a82-fb26-4060-88d2-037ff03f1e95",
+              "name": "Numbers only",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"1234567890\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"1234567890\"}"
+            },
+            {
+              "id": "6eea002a-9820-4127-a4ae-45318b271f7b",
+              "name": "Single icon only",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \":heart:\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \":heart:\"}"
+            },
+            {
+              "id": "387c5494-953b-486b-b603-7f27d3a858f5",
+              "name": "Multiple Unicode emoji characters",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"🎉🎊🎈\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": false, \"error\": \"Invalid input detected\"}"
+            },
+            {
+              "id": "6ddc6263-7924-4597-8037-fa4bc4f8e718",
+              "name": "Mixed valid text with Unicode emoji",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Party 🎉 Time\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": false, \"error\": \"Invalid input detected\"}"
+            },
+            {
+              "id": "643489f1-3ee3-4b8a-a227-8d9cf7edf49b",
+              "name": "Unicode heart emoji instead of icon code",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"I ❤️ you\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": false, \"error\": \"Invalid input detected\"}"
+            },
+            {
+              "id": "6330d605-3f8e-46f0-93d3-d387453b1746",
+              "name": "Unicode smiley emoji",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Happy 😊 Day\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": false, \"error\": \"Invalid input detected\"}"
+            },
+            {
+              "id": "6f05c7d4-e22d-466a-ba1a-f60d03810062",
+              "name": "Empty text field",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"\"}"
+            },
+            {
+              "id": "2d0b720e-e588-497a-8ecf-92702d6f1339",
+              "name": "Invalid icon code - likely passes through as text",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \":invalid: icon\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": false, \"error\": \"Invalid input detected\"}"
+            },
+            {
+              "id": "68386a70-3d45-4e9b-b250-669b767f7b7b",
+              "name": "German umlauts only",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"äöüÄÖÜß\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"äöüÄÖÜß\"}"
+            },
+            {
+              "id": "99176505-9844-44ea-8ca3-78e0bcad57ee",
+              "name": "Valid icon code mixed with Unicode emoji",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Test :heart: with 🎉 mixed\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": false, \"error\": \"Invalid input detected\"}"
+            },
+            {
+              "id": "74777545-4d4f-415d-a34e-c4ed2c040e18",
+              "name": "Multiple French and European accents",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"àäòöùüèéêëôöûîïÿç\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"àäòöùüèéêëôöûîïÿç\"}"
+            },
+            {
+              "id": "214cdbd8-da78-4d77-9412-12dd5c9df4b3",
+              "name": "SAP Greeting with Invalid Unicode",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Hello SAP 👋\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": false, \"error\": \"Invalid characters detected\", \"message\": \"Unicode emoji (👋) is not supported. Please use predefined icon codes like :smile: instead.\"}"
+            },
+            {
+              "id": "23e52a6b-2282-4c29-8f03-89b5e8c096bb",
+              "name": "SAP Greeting Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Greetings from SAP :star:\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Display updated successfully\", \"text\": \"Greetings from SAP :star:\"}"
+            },
+            {
+              "id": "6371db29-ae73-4594-ad35-3346da868f18",
+              "name": "Uber Greeting with Invalid Unicode",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Hello Uber 👋\", \"brightness\": 100, \"speed\": 5, \"mode\": 0}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": false, \"error\": \"Invalid characters detected\", \"message\": \"Unicode emoji characters are not supported. Please use only supported characters and icon codes.\"}"
+            },
+            {
+              "id": "4af4cd06-b4a0-4177-b473-69452ee7e620",
+              "name": "Uber Greeting Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Greetings from Uber :star:\", \"brightness\": 100, \"speed\": 5, \"mode\": 0}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Display updated successfully\", \"displayedText\": \"Greetings from Uber :star:\"}"
+            },
+            {
+              "id": "0e5a8c89-903a-4daa-b650-e21c85426f8c",
+              "name": "Greeting Adidas - Valid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Hello Adidas :star:\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": true, \"message\": \"Display updated successfully\", \"displayedText\": \"Hello Adidas :star:\"}"
+            },
+            {
+              "id": "104b0c6f-189f-447d-a806-fb0047cf5023",
+              "name": "Greeting Adidas - Invalid Unicode",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"text\": \"Hello Adidas 🎉\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"success\": false, \"error\": \"Invalid characters detected\", \"message\": \"Unicode emoji (🎉) is not supported. Please use only supported characters and icon codes like :star:, :heart:, etc.\"}"
+            },
+            {
+              "id": "ca84e7f3-db24-4607-8b90-19851ab0a92f",
+              "name": "ABB greeting (valid)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"Hello ABB :star:\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Text displayed\"\n}"
+            },
+            {
+              "id": "39f33713-20c5-4ca4-83ba-a4d67fc0224d",
+              "name": "ABB greeting (invalid emoji)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"Hello ABB 🌍\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-text",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-text"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"Unsupported character(s) in text\"\n}"
+            }
+          ]
+        }
+      ],
+      "id": "5cd9b73a-b3d5-400e-bec0-673f92dce073"
+    },
+    {
+      "name": "predefined-icons",
+      "item": [
+        {
+          "name": "Get Predefined Icons",
+          "id": "0d117dbf-10d9-4caa-884e-79470a564d6e",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/predefined-icons",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "predefined-icons"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fb5be077-0b6e-41e7-81d4-62cfdd8eabf2",
+              "name": "List of all available icon codes",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/predefined-icons",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "predefined-icons"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Server",
+                  "value": "Werkzeug/3.1.5 Python/3.13.7",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 12:20:00 GMT",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Connection",
+                  "value": "close",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"icons\": [\n    \":ball:\",\n    \":happy:\",\n    \":happy2:\",\n    \":heart:\",\n    \":HEART:\",\n    \":heart2:\",\n    \":HEART2:\",\n    \":fablab:\",\n    \":bicycle:\",\n    \":bicycle_r:\",\n    \":owncloud:\",\n    \":octocat:\",\n    \":smile:\",\n    \":star:\",\n    \":sun:\"\n  ]\n}"
+            }
+          ]
+        }
+      ],
+      "id": "de52672e-fd58-4651-8f8a-b6a06faf01f9"
+    },
+    {
+      "name": "display-summary",
+      "item": [
+        {
+          "name": "Display Summary",
+          "id": "35b02661-3cf3-4729-a602-3e2d8b696ce7",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"welcome\",\n  \"customText\": \"John\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/display-summary",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "display-summary"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2fd519c2-0997-490f-8377-027bd97113c4",
+              "name": "Summary message displayed successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"welcome\",\n  \"customText\": \"John\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/display-summary",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "display-summary"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Server",
+                  "value": "Werkzeug/3.1.5 Python/3.13.7",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 19 Jan 2026 12:25:00 GMT",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
+                },
+                {
+                  "key": "Connection",
+                  "value": "close",
+                  "disabled": false,
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"Summary displayed on LED\"\n}"
+            }
+          ]
+        }
+      ],
+      "id": "3ae43bc2-b550-4a75-9c0f-b6cdd34ddd28"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:5001",
+      "type": "string"
+    }
+  ]
+}
