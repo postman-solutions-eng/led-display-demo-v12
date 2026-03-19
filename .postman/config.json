@@ -11,8 +11,8 @@
       "../postman/collections/Final LED Display API_53180818-ee8ad1ac-8e16-41b4-8412-656df1e79daa.postman_collection.json"
     ],
     "environments": [
-      "../postman/environments/LED Display Localhost_53180818-f617756c-9ee9-4240-b856-2ff529a6928c.postman_environment.json",
-      "../postman/environments/LED Display Mock Environment_53180818-b57f7bf6-e6ed-4568-86c2-bd6df6cfd3c4.postman_environment.json"
+      "../postman/environments/LED Display Mock Environment_53180818-b57f7bf6-e6ed-4568-86c2-bd6df6cfd3c4.postman_environment.json",
+      "../postman/environments/LED Display Localhost_53180818-f617756c-9ee9-4240-b856-2ff529a6928c.postman_environment.json"
     ],
     "specs": [],
     "flows": [],
