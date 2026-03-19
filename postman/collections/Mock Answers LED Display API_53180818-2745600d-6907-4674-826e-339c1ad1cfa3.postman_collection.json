@@ -11,10 +11,7 @@
       "item": [
         {
           "name": "Display Text",
-          "id": "a3312565-54e9-420d-95e9-98f0f963a617",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
+          "id": "430ba09b-9ed8-4b3e-af7a-670a90f31a2c",
           "request": {
             "method": "POST",
             "header": [
@@ -32,7 +29,6 @@
               "raw": "{\n  \"text\": \"Hello World!\"\n}",
               "options": {
                 "raw": {
-                  "headerFamily": "json",
                   "language": "json"
                 }
               }
@@ -45,12 +41,11 @@
               "path": [
                 "display-text"
               ]
-            },
-            "description": "Updates the text and visual content displayed on the LED name badge. Accepts text and icon codes in the format `:icon_name:`.\n\n<img src=\"https://content.pstmn.io/05b1ef2c-9fd3-4f0e-8b2f-76998fb3f6e5/aW1hZ2UucG5n\" width=\"240\">\n\n## Supported Icon Codes\n| Icon Code | Description | |-----------|-------------| | `:ball:` | Filled circle | | `:happy:` | Simple smiley face | | `:happy2:` | Larger smiley (2 columns wide) | | `:heart:` | Outline heart | | `:HEART:` | Filled heart | | `:heart2:` | Larger outline heart (2 columns wide) | | `:HEART2:` | Larger filled heart (2 columns wide) | | `:fablab:` | FabLab logo | | `:bicycle:` | Bicycle icon (3 columns wide) | | `:bicycle_r:` | Bicycle facing right (3 columns wide) | | `:owncloud:` | OwnCloud logo (3 columns wide) | | `:octocat:` | GitHub Octocat | | `:smile:` | Smile emoji | | `:star:` | Star icon | | `:sun:` | Sun icon |\n\n## Character Restrictions\n**Supported characters:** - Letters: A-Z, a-z - Numbers: 0-9 - Special characters: `^ !\"$%&/()=?` °\\}][{@ ~ |<>,;.:-_#'+*` - German umlauts: äöüÄÖÜß - French/European accents: àäòöùüèéêëôöûîïÿçÀÅÄÉÈÊËÖÔÜÛÙŸŠ\n**NOT supported:** - Unicode emoji (e.g., 🌍) - will return a 400 error with \"Invalid display string format\"\n**Escape sequences:** - `::` - Escapes to a single literal colon (e.g., `10::30` displays as `10:30`)\n**Custom images:** - Use `:path/to/image.png:` syntax to reference custom image files - Images must be exactly 11 pixels high"
+            }
           },
           "response": [
             {
-              "id": "cd90025c-5a89-4a8a-b11a-90db47f11ffd",
+              "id": "d7819957-7c8d-44ed-a6be-d985cf88e0cb",
               "name": "Success with Text + Heart Icon",
               "originalRequest": {
                 "method": "POST",
@@ -69,7 +64,6 @@
                   "raw": "{\n  \"text\": \"Hello World!\"\n}",
                   "options": {
                     "raw": {
-                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
@@ -90,43 +84,33 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "application/json"
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
                 },
                 {
-                  "disabled": false,
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
                   "key": "Server",
-                  "value": "Werkzeug/3.1.5 Python/3.13.7"
+                  "value": "Werkzeug/3.1.5 Python/3.13.7",
+                  "disabled": false,
+                  "description": ""
                 },
                 {
-                  "disabled": false,
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
                   "key": "Date",
-                  "value": "Mon, 19 Jan 2026 12:16:21 GMT"
+                  "value": "Mon, 19 Jan 2026 12:16:21 GMT",
+                  "disabled": false,
+                  "description": ""
                 },
                 {
-                  "disabled": false,
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
                   "key": "Content-Length",
-                  "value": "65"
+                  "value": "65",
+                  "disabled": false,
+                  "description": ""
                 },
                 {
-                  "disabled": false,
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
                   "key": "Connection",
-                  "value": "close"
+                  "value": "close",
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -134,7 +118,7 @@
               "body": "{\n  \"status\": \"Text displayed on LED\",\n  \"text\": \"Hello World! :heart:\"\n}"
             },
             {
-              "id": "0e50e343-1f3c-43dd-9fc3-d091c0232396",
+              "id": "f3069dea-7b1d-4018-94f8-1c89617eecd5",
               "name": "Failure HTML Response (Unicode)?",
               "originalRequest": {
                 "method": "POST",
@@ -153,7 +137,6 @@
                   "raw": "{\n  \"text\": \"Hello World!\"\n}",
                   "options": {
                     "raw": {
-                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
@@ -174,43 +157,33 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "application/json"
+                  "value": "application/json",
+                  "disabled": false,
+                  "description": ""
                 },
                 {
-                  "disabled": false,
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
                   "key": "Server",
-                  "value": "Werkzeug/3.1.4 Python/3.13.5"
+                  "value": "Werkzeug/3.1.4 Python/3.13.5",
+                  "disabled": false,
+                  "description": ""
                 },
                 {
-                  "disabled": false,
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
                   "key": "Date",
-                  "value": "Mon, 19 Jan 2026 12:47:31 GMT"
+                  "value": "Mon, 19 Jan 2026 12:47:31 GMT",
+                  "disabled": false,
+                  "description": ""
                 },
                 {
-                  "disabled": false,
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
                   "key": "Content-Length",
-                  "value": "69"
+                  "value": "69",
+                  "disabled": false,
+                  "description": ""
                 },
                 {
-                  "disabled": false,
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
                   "key": "Connection",
-                  "value": "close"
+                  "value": "close",
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -218,7 +191,7 @@
               "body": "{\n  \"details\": \"'🌍'\",\n  \"error\": \"Invalid display string format\"\n}"
             },
             {
-              "id": "431d2e34-60bc-4e68-a0d6-b0808de82c9e",
+              "id": "afcf547d-ac3a-4156-ac50-73e70778b8fa",
               "name": "Error when not started with right permissions",
               "originalRequest": {
                 "method": "POST",
@@ -233,7 +206,6 @@
                   "raw": "{\n  \"text\": \"Hello World!\"\n}",
                   "options": {
                     "raw": {
-                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
@@ -253,40 +225,28 @@
               "_postman_previewlanguage": "text",
               "header": [
                 {
-                  "disabled": false,
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
                   "key": "Server",
-                  "value": "Werkzeug/3.1.4 Python/3.13.5"
+                  "value": "Werkzeug/3.1.4 Python/3.13.5",
+                  "disabled": false,
+                  "description": ""
                 },
                 {
-                  "disabled": false,
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
                   "key": "Date",
-                  "value": "Mon, 19 Jan 2026 12:16:58 GMT"
+                  "value": "Mon, 19 Jan 2026 12:16:58 GMT",
+                  "disabled": false,
+                  "description": ""
                 },
                 {
-                  "disabled": false,
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
                   "key": "Content-Length",
-                  "value": "265"
+                  "value": "265",
+                  "disabled": false,
+                  "description": ""
                 },
                 {
-                  "disabled": false,
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
                   "key": "Connection",
-                  "value": "close"
+                  "value": "close",
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -294,7 +254,7 @@
               "body": ""
             },
             {
-              "id": "a8ea0218-6d3c-4187-8983-aab0fed531e4",
+              "id": "7080ce43-2406-4a2f-b74e-64a6851edf70",
               "name": "Success - Text with Valid Icons",
               "originalRequest": {
                 "method": "POST",
@@ -330,8 +290,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -339,7 +299,7 @@
               "body": "{\n  \"success\": true,\n  \"message\": \"Display updated successfully\",\n  \"displayedText\": \"I :heart: Postman :smile: You're a :star:\"\n}"
             },
             {
-              "id": "9e5d6f21-6e68-40fe-a171-217adf4f4fe9",
+              "id": "026cd853-e648-4d84-8c63-89daec86e4f3",
               "name": "Error - Unicode Emoji Not Supported",
               "originalRequest": {
                 "method": "POST",
@@ -375,8 +335,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -384,7 +344,7 @@
               "body": "{\n  \"success\": false,\n  \"error\": \"Invalid characters detected\",\n  \"message\": \"Unicode emoji are not supported. Please use predefined icon codes like :heart:, :smile:, :star: instead.\",\n  \"invalidText\": \"Hello 🌍 World\"\n}"
             },
             {
-              "id": "639d3ad3-1770-4660-b469-e3f7f16afc8e",
+              "id": "07c43431-2f4a-4059-979b-a852b67a3808",
               "name": "Success - Simple Text",
               "originalRequest": {
                 "method": "POST",
@@ -420,8 +380,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -429,7 +389,7 @@
               "body": "{\n  \"success\": true,\n  \"message\": \"Display updated successfully\",\n  \"displayedText\": \"Hello World\"\n}"
             },
             {
-              "id": "d7202244-114a-4038-8897-aabbd385c4ba",
+              "id": "33372136-9085-4994-ba7d-2ac2c4ee6b41",
               "name": "Error - Multiple Unicode Emoji",
               "originalRequest": {
                 "method": "POST",
@@ -465,8 +425,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -474,7 +434,7 @@
               "body": "{\n  \"success\": false,\n  \"error\": \"Invalid characters detected\",\n  \"message\": \"Unicode emoji are not supported. Please use predefined icon codes like :heart:, :smile:, :star: instead.\",\n  \"invalidText\": \"🎉🎊🎈\"\n}"
             },
             {
-              "id": "dd81ed73-aa1c-4f3f-9d6f-69511a8e92cf",
+              "id": "80d5bd54-901b-4b5b-ab43-ca6404aea0a8",
               "name": "Success - German Umlauts",
               "originalRequest": {
                 "method": "POST",
@@ -510,8 +470,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -519,7 +479,7 @@
               "body": "{\n  \"success\": true,\n  \"message\": \"Display updated successfully\",\n  \"displayedText\": \"Grüße aus München\"\n}"
             },
             {
-              "id": "78d15e9b-581f-4ba3-93ba-0456580dcbbc",
+              "id": "2e44a467-bc97-44c0-ba10-a1041de4547f",
               "name": "Error - Mixed Valid Text with Emoji",
               "originalRequest": {
                 "method": "POST",
@@ -555,8 +515,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -564,7 +524,7 @@
               "body": "{\n  \"success\": false,\n  \"error\": \"Invalid characters detected\",\n  \"message\": \"Unicode emoji are not supported. Please use predefined icon codes like :heart:, :smile:, :star: instead.\",\n  \"invalidText\": \"Party 🎉 Time\"\n}"
             },
             {
-              "id": "a15c2ac9-a5ef-4600-a7cf-d6776492b25a",
+              "id": "7a42bc41-afc6-4d23-80f0-c3af69394c74",
               "name": "Success - Empty Text",
               "originalRequest": {
                 "method": "POST",
@@ -600,8 +560,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -609,7 +569,7 @@
               "body": "{\n  \"success\": true,\n  \"message\": \"Display updated successfully\",\n  \"displayedText\": \"\"\n}"
             },
             {
-              "id": "9f620dc1-aa34-4171-bfbe-245dba716382",
+              "id": "84d1e34e-8bf0-492f-a8ac-cff52f4052ac",
               "name": "Success - Numbers and Text",
               "originalRequest": {
                 "method": "POST",
@@ -645,8 +605,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -654,7 +614,7 @@
               "body": "{\n  \"success\": true,\n  \"message\": \"Display updated successfully\",\n  \"displayedText\": \"12345 Numbers Only 67890\"\n}"
             },
             {
-              "id": "e85e633c-0b1f-490e-8dc8-7c094ece7aef",
+              "id": "9d2f3afe-91e9-4514-b37d-91ceaca49295",
               "name": "Error - Invalid Icon Code",
               "originalRequest": {
                 "method": "POST",
@@ -690,8 +650,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -699,7 +659,7 @@
               "body": "{\n  \"success\": false,\n  \"error\": \"Invalid icon code\",\n  \"message\": \"The icon code ':invalid:' is not recognized. Please use valid icon codes like :heart:, :smile:, :star:, :ball:, :sun:, etc.\",\n  \"invalidIconCode\": \":invalid:\"\n}"
             },
             {
-              "id": "4c1ecb82-f167-447d-a25e-31a5105fccee",
+              "id": "a5d42624-1684-418d-a69c-a75102be5190",
               "name": "Error - Unicode Heart Emoji",
               "originalRequest": {
                 "method": "POST",
@@ -735,8 +695,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -744,7 +704,7 @@
               "body": "{\"success\": false, \"error\": \"Unicode emoji not supported. Please use icon codes like :heart: instead.\"}"
             },
             {
-              "id": "76daaf56-5e61-4a69-8d0b-e392ddc70d31",
+              "id": "9cdbe474-81d6-4d69-80fa-a42c5e8654a8",
               "name": "Error - Unicode Smiley Emoji",
               "originalRequest": {
                 "method": "POST",
@@ -780,8 +740,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -789,7 +749,7 @@
               "body": "{\"success\": false, \"error\": \"Unicode emoji not supported. Please use icon codes like :smile: instead.\"}"
             },
             {
-              "id": "c6443567-2330-4ba2-bb48-e8c0d2b10e1d",
+              "id": "6ebdecf8-8c92-4426-98cc-c0eef571a316",
               "name": "Error - Invalid Icon Code",
               "originalRequest": {
                 "method": "POST",
@@ -825,8 +785,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -834,7 +794,7 @@
               "body": "{\"success\": false, \"error\": \"Invalid icon code ':invalid:'. Supported icons: :heart:, :smile:, :star:, :ball:, :sun:\"}"
             },
             {
-              "id": "e2238113-2b85-4f97-b977-b1d15429c910",
+              "id": "eed50587-8dc0-49ab-aa9f-2b7d9b339f84",
               "name": "Error - Mixed Valid Icon with Unicode Emoji",
               "originalRequest": {
                 "method": "POST",
@@ -870,8 +830,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -879,7 +839,7 @@
               "body": "{\"success\": false, \"error\": \"Unicode emoji not supported. Please use icon codes instead of emoji characters.\"}"
             },
             {
-              "id": "bb52e56e-8a28-4050-bbab-57e75e04a484",
+              "id": "33a9680d-69aa-42f7-a037-cca2303625f3",
               "name": "Multiple valid icon codes",
               "originalRequest": {
                 "method": "POST",
@@ -915,8 +875,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -924,7 +884,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \":ball: :sun: :heart: :smile: :star:\"}"
             },
             {
-              "id": "c235a406-c6ba-4a29-954c-743d09af53c1",
+              "id": "1ac20dde-74cf-42ed-a690-dcd9cc32cc3d",
               "name": "Text with star icon at end",
               "originalRequest": {
                 "method": "POST",
@@ -960,8 +920,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -969,7 +929,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"You're a :star:\"}"
             },
             {
-              "id": "4a6dce1b-00cb-4349-9e83-90875be07f1e",
+              "id": "f5df72cb-e7bb-4203-a736-91484bb5a121",
               "name": "Text with smile icon code",
               "originalRequest": {
                 "method": "POST",
@@ -1005,8 +965,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1014,7 +974,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"Happy :smile: Day\"}"
             },
             {
-              "id": "59e9b5b9-ef23-4c90-81bc-25ea817220e5",
+              "id": "28643e18-b485-438b-b8f6-1948ff42b25d",
               "name": "Text with heart icon code",
               "originalRequest": {
                 "method": "POST",
@@ -1050,8 +1010,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1059,7 +1019,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"I :heart: Postman\"}"
             },
             {
-              "id": "36c50524-2659-4ae5-9fe4-35f6359c3193",
+              "id": "20a8b7ab-a850-4fa8-88a2-ac4fec5ac95f",
               "name": "Multiple valid icon codes",
               "originalRequest": {
                 "method": "POST",
@@ -1095,8 +1055,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1104,7 +1064,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \":ball: :sun: :heart: :smile: :star:\"}"
             },
             {
-              "id": "0c02ba8e-0e37-4636-a8d9-3b3beb489452",
+              "id": "c0f7ffc6-9b05-49e0-9ab0-d1c2d9fa8571",
               "name": "Text with star icon at end",
               "originalRequest": {
                 "method": "POST",
@@ -1140,8 +1100,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1149,7 +1109,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"You're a :star:\"}"
             },
             {
-              "id": "86028621-4610-46a4-ac45-1b6e85d1a334",
+              "id": "aa24c40a-3d50-4df7-ab01-a56fb9d76499",
               "name": "Text with smile icon code",
               "originalRequest": {
                 "method": "POST",
@@ -1185,8 +1145,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1194,7 +1154,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"Happy :smile: Day\"}"
             },
             {
-              "id": "af3a43c4-e36b-4699-8ad4-4ee5207bf9c1",
+              "id": "2b976dcc-8453-4c36-b785-8ecc2946536c",
               "name": "Text with heart icon code",
               "originalRequest": {
                 "method": "POST",
@@ -1230,8 +1190,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1239,7 +1199,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"I :heart: Postman\"}"
             },
             {
-              "id": "07216e18-802d-407b-bb23-6befcf501394",
+              "id": "e3acba77-8aaa-4f6f-819b-af9941316331",
               "name": "Simple text message with no special characters",
               "originalRequest": {
                 "method": "POST",
@@ -1275,8 +1235,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1284,7 +1244,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"Hello World\"}"
             },
             {
-              "id": "f76313c7-79b2-4909-857c-b4b2acc3c587",
+              "id": "2e73a6ef-d17a-4ca5-9b2c-4b00229bcb29",
               "name": "Mixed text and multiple icons",
               "originalRequest": {
                 "method": "POST",
@@ -1320,8 +1280,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1329,7 +1289,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"Hello :heart: World :smile: Everyone\"}"
             },
             {
-              "id": "034a8ee7-fea5-461d-a784-dd4e38ebdcfa",
+              "id": "dabce75c-1a89-4bf6-9db0-631753e81330",
               "name": "Text with escaped colon sequence",
               "originalRequest": {
                 "method": "POST",
@@ -1365,8 +1325,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1374,7 +1334,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"Time is 12::30\"}"
             },
             {
-              "id": "3989cda4-fac8-4ee4-9af6-ba0db2af43d0",
+              "id": "b9eb6329-5ef0-4703-9062-cf6fb7ce6742",
               "name": "French text with accents",
               "originalRequest": {
                 "method": "POST",
@@ -1410,8 +1370,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1419,7 +1379,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"Café à Paris\"}"
             },
             {
-              "id": "e6a0d25e-484d-47e9-b129-038c6e0f07d3",
+              "id": "9dbe158b-af87-4340-bfca-a0807371deea",
               "name": "German text with umlauts",
               "originalRequest": {
                 "method": "POST",
@@ -1455,8 +1415,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1464,7 +1424,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"Grüße aus München\"}"
             },
             {
-              "id": "cfc549cf-69eb-460f-bff1-615372097be4",
+              "id": "3860d30b-c770-4f48-8139-880f53d128ef",
               "name": "Text with supported special characters",
               "originalRequest": {
                 "method": "POST",
@@ -1500,8 +1460,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1509,7 +1469,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"Test!@#$%&/()=?\"}"
             },
             {
-              "id": "9a3e96f1-6c6f-485f-8953-d5af9d02f768",
+              "id": "cf21e077-5b2a-4951-b630-f61b63fc8eeb",
               "name": "Invalid Unicode emoji - globe",
               "originalRequest": {
                 "method": "POST",
@@ -1545,8 +1505,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1554,7 +1514,7 @@
               "body": "{\"success\": false, \"error\": \"Invalid input detected\"}"
             },
             {
-              "id": "ba7f3324-dd9b-49a4-a35d-6ee95cabbdc5",
+              "id": "9bbff6d9-5da5-42ef-9a56-fbb9109283d5",
               "name": "Very long text message (200+ characters)",
               "originalRequest": {
                 "method": "POST",
@@ -1590,8 +1550,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1599,7 +1559,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"The quick brown fox jumps over the lazy dog. This is a longer message to test the LED display with more content. It includes multiple sentences and should still work fine with the API endpoint.\"}"
             },
             {
-              "id": "45ef206e-f601-4074-b984-314c08136883",
+              "id": "38bd54ff-8463-4d93-aa07-747706f5370c",
               "name": "Multiple icons with no spaces",
               "originalRequest": {
                 "method": "POST",
@@ -1635,8 +1595,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1644,7 +1604,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \":heart::smile::star::ball::sun:\"}"
             },
             {
-              "id": "2a33ffaa-e3f7-41c2-9829-b69df5de520f",
+              "id": "55ea1a82-fb26-4060-88d2-037ff03f1e95",
               "name": "Numbers only",
               "originalRequest": {
                 "method": "POST",
@@ -1680,8 +1640,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1689,7 +1649,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"1234567890\"}"
             },
             {
-              "id": "c71333c1-a30e-45d0-aa2d-048e9307874d",
+              "id": "6eea002a-9820-4127-a4ae-45318b271f7b",
               "name": "Single icon only",
               "originalRequest": {
                 "method": "POST",
@@ -1725,8 +1685,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1734,7 +1694,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \":heart:\"}"
             },
             {
-              "id": "6705f61b-a168-4244-8c5e-d5dacfd3ec9a",
+              "id": "387c5494-953b-486b-b603-7f27d3a858f5",
               "name": "Multiple Unicode emoji characters",
               "originalRequest": {
                 "method": "POST",
@@ -1770,8 +1730,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1779,7 +1739,7 @@
               "body": "{\"success\": false, \"error\": \"Invalid input detected\"}"
             },
             {
-              "id": "c9631677-2ac3-4109-b3e2-b6ad1440c2ca",
+              "id": "6ddc6263-7924-4597-8037-fa4bc4f8e718",
               "name": "Mixed valid text with Unicode emoji",
               "originalRequest": {
                 "method": "POST",
@@ -1815,8 +1775,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1824,7 +1784,7 @@
               "body": "{\"success\": false, \"error\": \"Invalid input detected\"}"
             },
             {
-              "id": "98c01faa-1d80-47dd-9a05-d07b2f237be4",
+              "id": "643489f1-3ee3-4b8a-a227-8d9cf7edf49b",
               "name": "Unicode heart emoji instead of icon code",
               "originalRequest": {
                 "method": "POST",
@@ -1860,8 +1820,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1869,7 +1829,7 @@
               "body": "{\"success\": false, \"error\": \"Invalid input detected\"}"
             },
             {
-              "id": "adc5cff8-3f5f-4079-ac35-b73f254f8d64",
+              "id": "6330d605-3f8e-46f0-93d3-d387453b1746",
               "name": "Unicode smiley emoji",
               "originalRequest": {
                 "method": "POST",
@@ -1905,8 +1865,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1914,7 +1874,7 @@
               "body": "{\"success\": false, \"error\": \"Invalid input detected\"}"
             },
             {
-              "id": "80f221b9-ebb5-41ae-be92-d8eb00a4ba23",
+              "id": "6f05c7d4-e22d-466a-ba1a-f60d03810062",
               "name": "Empty text field",
               "originalRequest": {
                 "method": "POST",
@@ -1950,8 +1910,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -1959,7 +1919,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"\"}"
             },
             {
-              "id": "3eea52f8-8313-4235-ba0b-a10557409ab2",
+              "id": "2d0b720e-e588-497a-8ecf-92702d6f1339",
               "name": "Invalid icon code - likely passes through as text",
               "originalRequest": {
                 "method": "POST",
@@ -1995,8 +1955,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -2004,7 +1964,7 @@
               "body": "{\"success\": false, \"error\": \"Invalid input detected\"}"
             },
             {
-              "id": "62553495-68ab-4c11-8427-211c125dae26",
+              "id": "68386a70-3d45-4e9b-b250-669b767f7b7b",
               "name": "German umlauts only",
               "originalRequest": {
                 "method": "POST",
@@ -2040,8 +2000,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -2049,7 +2009,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"äöüÄÖÜß\"}"
             },
             {
-              "id": "683883ce-cff7-49c6-8bae-207d8d23ccb2",
+              "id": "99176505-9844-44ea-8ca3-78e0bcad57ee",
               "name": "Valid icon code mixed with Unicode emoji",
               "originalRequest": {
                 "method": "POST",
@@ -2085,8 +2045,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -2094,7 +2054,7 @@
               "body": "{\"success\": false, \"error\": \"Invalid input detected\"}"
             },
             {
-              "id": "f9c87691-0deb-4ddb-97d3-f192c29bc43d",
+              "id": "74777545-4d4f-415d-a34e-c4ed2c040e18",
               "name": "Multiple French and European accents",
               "originalRequest": {
                 "method": "POST",
@@ -2130,8 +2090,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -2139,7 +2099,7 @@
               "body": "{\"success\": true, \"message\": \"Text displayed successfully\", \"text\": \"àäòöùüèéêëôöûîïÿç\"}"
             },
             {
-              "id": "34c74805-42af-49c5-8c91-c25ec1c610ab",
+              "id": "214cdbd8-da78-4d77-9412-12dd5c9df4b3",
               "name": "SAP Greeting with Invalid Unicode",
               "originalRequest": {
                 "method": "POST",
@@ -2175,8 +2135,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -2184,7 +2144,7 @@
               "body": "{\"success\": false, \"error\": \"Invalid characters detected\", \"message\": \"Unicode emoji (👋) is not supported. Please use predefined icon codes like :smile: instead.\"}"
             },
             {
-              "id": "c17bb541-307c-442e-ba6c-9480224efaad",
+              "id": "23e52a6b-2282-4c29-8f03-89b5e8c096bb",
               "name": "SAP Greeting Success",
               "originalRequest": {
                 "method": "POST",
@@ -2220,8 +2180,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -2229,7 +2189,7 @@
               "body": "{\"success\": true, \"message\": \"Display updated successfully\", \"text\": \"Greetings from SAP :star:\"}"
             },
             {
-              "id": "e4046f0c-df68-42a9-9cdf-841137a15e1d",
+              "id": "6371db29-ae73-4594-ad35-3346da868f18",
               "name": "Uber Greeting with Invalid Unicode",
               "originalRequest": {
                 "method": "POST",
@@ -2265,8 +2225,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -2274,7 +2234,7 @@
               "body": "{\"success\": false, \"error\": \"Invalid characters detected\", \"message\": \"Unicode emoji characters are not supported. Please use only supported characters and icon codes.\"}"
             },
             {
-              "id": "4b63b5e6-59bf-4326-8c6f-3e5c1369e7d5",
+              "id": "4af4cd06-b4a0-4177-b473-69452ee7e620",
               "name": "Uber Greeting Success",
               "originalRequest": {
                 "method": "POST",
@@ -2310,8 +2270,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -2319,7 +2279,7 @@
               "body": "{\"success\": true, \"message\": \"Display updated successfully\", \"displayedText\": \"Greetings from Uber :star:\"}"
             },
             {
-              "id": "a23ef637-67e7-4215-b06c-1dd0ee7e1e95",
+              "id": "0e5a8c89-903a-4daa-b650-e21c85426f8c",
               "name": "Greeting Adidas - Valid",
               "originalRequest": {
                 "method": "POST",
@@ -2355,8 +2315,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -2364,7 +2324,7 @@
               "body": "{\"success\": true, \"message\": \"Display updated successfully\", \"displayedText\": \"Hello Adidas :star:\"}"
             },
             {
-              "id": "98121dcb-4389-4f4e-8766-a9cd2496252c",
+              "id": "104b0c6f-189f-447d-a806-fb0047cf5023",
               "name": "Greeting Adidas - Invalid Unicode",
               "originalRequest": {
                 "method": "POST",
@@ -2400,8 +2360,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -2409,7 +2369,7 @@
               "body": "{\"success\": false, \"error\": \"Invalid characters detected\", \"message\": \"Unicode emoji (🎉) is not supported. Please use only supported characters and icon codes like :star:, :heart:, etc.\"}"
             },
             {
-              "id": "c0fcb216-1398-44d1-be8b-43b7e39e1fcd",
+              "id": "ca84e7f3-db24-4607-8b90-19851ab0a92f",
               "name": "ABB greeting (valid)",
               "originalRequest": {
                 "method": "POST",
@@ -2445,8 +2405,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -2454,7 +2414,7 @@
               "body": "{\n  \"status\": \"success\",\n  \"message\": \"Text displayed\"\n}"
             },
             {
-              "id": "9482c656-afc7-4692-ad38-103623a030c9",
+              "id": "39f33713-20c5-4ca4-83ba-a4d67fc0224d",
               "name": "ABB greeting (invalid emoji)",
               "originalRequest": {
                 "method": "POST",
@@ -2490,8 +2450,8 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "description": "",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -2501,17 +2461,14 @@
           ]
         }
       ],
-      "id": "55f5d709-1aac-4ddb-9189-c7b499ce2341"
+      "id": "5cd9b73a-b3d5-400e-bec0-673f92dce073"
     },
     {
       "name": "predefined-icons",
       "item": [
         {
           "name": "Get Predefined Icons",
-          "id": "70965c1d-a44d-41a4-be4e-28f4ed4a958d",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
+          "id": "0d117dbf-10d9-4caa-884e-79470a564d6e",
           "request": {
             "method": "GET",
             "header": [
@@ -2528,12 +2485,11 @@
               "path": [
                 "predefined-icons"
               ]
-            },
-            "description": "Returns a list of all available icon codes that can be used in display text. Icons are returned as simple string codes in the `:icon_name:` format."
+            }
           },
           "response": [
             {
-              "id": "ea94d85f-ead6-4456-bed3-f5cf1d6cc706",
+              "id": "fb5be077-0b6e-41e7-81d4-62cfdd8eabf2",
               "name": "List of all available icon codes",
               "originalRequest": {
                 "method": "GET",
@@ -2560,35 +2516,32 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 },
                 {
-                  "disabled": false,
-                  "description": "",
                   "key": "Server",
                   "value": "Werkzeug/3.1.5 Python/3.13.7",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 },
                 {
-                  "disabled": false,
-                  "description": "",
                   "key": "Date",
                   "value": "Mon, 19 Jan 2026 12:20:00 GMT",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 },
                 {
-                  "disabled": false,
-                  "description": "",
                   "key": "Content-Type",
                   "value": "application/json",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 },
                 {
-                  "disabled": false,
-                  "description": "",
                   "key": "Connection",
                   "value": "close",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -2598,17 +2551,14 @@
           ]
         }
       ],
-      "id": "41b1e63c-09c2-4e7d-9e21-19c6884e8d2c"
+      "id": "de52672e-fd58-4651-8f8a-b6a06faf01f9"
     },
     {
       "name": "display-summary",
       "item": [
         {
           "name": "Display Summary",
-          "id": "6ce6c44e-39b2-4988-8847-0bb87405ed3b",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
+          "id": "35b02661-3cf3-4729-a602-3e2d8b696ce7",
           "request": {
             "method": "POST",
             "header": [
@@ -2626,7 +2576,6 @@
               "raw": "{\n  \"type\": \"welcome\",\n  \"customText\": \"John\"\n}",
               "options": {
                 "raw": {
-                  "headerFamily": "json",
                   "language": "json"
                 }
               }
@@ -2639,12 +2588,11 @@
               "path": [
                 "display-summary"
               ]
-            },
-            "description": "Displays a predefined summary message on the LED badge. This endpoint provides a quick way to show common status messages without constructing custom text.\n\nNote: The API does not validate the type parameter and will return success for any type value provided."
+            }
           },
           "response": [
             {
-              "id": "83d5600d-e11c-4361-aec5-aacdb1c76a84",
+              "id": "2fd519c2-0997-490f-8377-027bd97113c4",
               "name": "Summary message displayed successfully",
               "originalRequest": {
                 "method": "POST",
@@ -2663,7 +2611,6 @@
                   "raw": "{\n  \"type\": \"welcome\",\n  \"customText\": \"John\"\n}",
                   "options": {
                     "raw": {
-                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
@@ -2685,35 +2632,32 @@
                 {
                   "key": "Content-Type",
                   "value": "application/json",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 },
                 {
-                  "disabled": false,
-                  "description": "",
                   "key": "Server",
                   "value": "Werkzeug/3.1.5 Python/3.13.7",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 },
                 {
-                  "disabled": false,
-                  "description": "",
                   "key": "Date",
                   "value": "Mon, 19 Jan 2026 12:25:00 GMT",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 },
                 {
-                  "disabled": false,
-                  "description": "",
                   "key": "Content-Type",
                   "value": "application/json",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 },
                 {
-                  "disabled": false,
-                  "description": "",
                   "key": "Connection",
                   "value": "close",
-                  "enabled": true
+                  "disabled": false,
+                  "description": ""
                 }
               ],
               "cookie": [],
@@ -2723,13 +2667,14 @@
           ]
         }
       ],
-      "id": "4b694b1b-283b-4a49-b40f-a16a6710a6f0"
+      "id": "3ae43bc2-b550-4a75-9c0f-b6cdd34ddd28"
     }
   ],
   "variable": [
     {
       "key": "baseUrl",
-      "value": "http://127.0.0.1:5001"
+      "value": "http://127.0.0.1:5001",
+      "type": "string"
     }
   ]
 }

@@ -15,20 +15,22 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
+                "id": "4adb1ea5-b367-4bea-97c4-27ea7f7d9848",
                 "exec": [
-                  "const responseData = pm.response.json();\n\n// Check if mock_image exists in the response\nif (responseData.mock_image) {\n    // Create visualization with base64 image\n    const template = `\n        <div style=\"text-align: center; padding: 20px;\">\n            <h3>LED Display Output</h3>\n            <img src=\"data:image/png;base64,{{mock_image}}\" alt=\"LED Display\" style=\"max-width: 100%; border: 2px solid #333; border-radius: 8px;\" />\n            <p style=\"margin-top: 15px;\"><strong>Status:</strong> {{status}}</p>\n            <p><strong>Text:</strong> {{text}}</p>\n        </div>\n    `;\n    \n    pm.visualizer.set(template, {\n        mock_image: responseData.mock_image,\n        status: responseData.status,\n        text: responseData.text\n    });\n} else {\n    // Use LED visualization code when mock_image doesn't exist\n    const ledViz = pm.require('@automotive-demo/led-viz');\n    const payload = {\n        displayText: responseData.text || \"NO DATA\"\n    };\n    pm.visualizer.set(ledViz.template, payload);\n}"
+                  "const genericTests = pm.require('@postman-italy-769381/generic-tests');",
+                  ""
                 ],
+                "type": "text/javascript",
                 "packages": {
-                  "@automotive-demo/led-viz": {
-                    "id": "019be0fc-20d1-7647-84f9-d8ed05edc08a"
+                  "@postman-italy-769381/generic-tests": {
+                    "id": "019d02b0-e334-7719-a6c4-d7a4801f02e2"
                   }
-                }
-              },
-              "disabled": false
+                },
+                "requests": {}
+              }
             }
           ],
-          "id": "20fc8ada-9ae4-4c65-9633-78fbd8ad7e84",
+          "id": "830bee59-677c-437c-9de3-054e86c0be81",
           "request": {
             "auth": {
               "type": "apikey",
@@ -62,7 +64,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"text\": \"Hello World! :star:\"\n}",
+              "raw": "{\n  \"text\": \"Hello World! :heart:\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -81,7 +83,7 @@
           },
           "response": [
             {
-              "id": "ec89c83f-8e3e-441f-b245-0f5a3a97082e",
+              "id": "309590bd-10cc-4d2f-8176-6cca51d3a9f1",
               "name": "Success with Text + Heart Icon",
               "originalRequest": {
                 "method": "POST",
@@ -159,7 +161,7 @@
               "body": "{\n  \"status\": \"Text displayed on LED\",\n  \"text\": \"Hello World! :heart:\"\n}"
             },
             {
-              "id": "e5d891ec-5fb6-44e8-8cdc-f2b781a3c1f3",
+              "id": "91cea5fc-1b5d-4fe4-bd06-bb7d5f8f6e49",
               "name": "Failure HTML Response (Unicode)?",
               "originalRequest": {
                 "method": "POST",
@@ -237,7 +239,7 @@
               "body": "{\n  \"details\": \"'🌍'\",\n  \"error\": \"Invalid display string format\"\n}"
             },
             {
-              "id": "c2bd0ff8-adbc-4d29-8b90-b30c6c85a223",
+              "id": "1fe7bdf7-3b4a-4402-866c-cf9d86a75cf3",
               "name": "Error when not started with right permissions",
               "originalRequest": {
                 "method": "POST",
@@ -307,14 +309,92 @@
           ]
         }
       ],
-      "id": "bf4599d7-aeee-4f5c-a4e0-a2f250c09719"
+      "id": "d5649a5e-b4d2-4849-975e-63bd92d5c3b6"
     },
     {
       "name": "predefined-icons",
       "item": [
         {
           "name": "Get Predefined Icons",
-          "id": "ee8c7fa0-add5-49dc-b447-0e0956825e6f",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is below 500ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(500);",
+                  "});",
+                  "",
+                  "pm.test(\"Content-Type header is application/json\", function () {",
+                  "    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body is an object (not an array)\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.be.an(\"object\").and.not.an(\"array\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body has an 'icons' property\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"icons\");",
+                  "});",
+                  "",
+                  "pm.test(\"'icons' is an array\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.icons).to.be.an(\"array\");",
+                  "});",
+                  "",
+                  "pm.test(\"'icons' array is not empty\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.icons).to.have.length.above(0);",
+                  "});",
+                  "",
+                  "pm.test(\"Every item in 'icons' is a string\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    jsonData.icons.forEach(function (icon) {",
+                  "        pm.expect(icon).to.be.a(\"string\");",
+                  "    });",
+                  "});",
+                  "",
+                  "pm.test(\"Every item in 'icons' matches shortcode format (starts and ends with a colon)\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    var shortcodePattern = /^:[^:]+:$/;",
+                  "    jsonData.icons.forEach(function (icon) {",
+                  "        pm.expect(icon).to.match(shortcodePattern);",
+                  "    });",
+                  "});",
+                  "",
+                  "pm.test(\"'icons' array contains at least 10 items\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.icons.length).to.be.at.least(10);",
+                  "});",
+                  "",
+                  "pm.test(\"No duplicate icons exist in the array\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    var uniqueIcons = new Set(jsonData.icons);",
+                  "    pm.expect(uniqueIcons.size).to.equal(jsonData.icons.length);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body has no unexpected top-level keys (only 'icons')\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    var allowedKeys = [\"icons\"];",
+                  "    var actualKeys = Object.keys(jsonData);",
+                  "    actualKeys.forEach(function (key) {",
+                  "        pm.expect(allowedKeys).to.include(key);",
+                  "    });",
+                  "});",
+                  ""
+                ]
+              }
+            }
+          ],
+          "id": "75283c12-4394-452f-bd06-396dc4ebfa07",
           "request": {
             "method": "GET",
             "header": [
@@ -335,7 +415,7 @@
           },
           "response": [
             {
-              "id": "b2d2e91e-c219-4e60-b3f4-a2b0f25e0c46",
+              "id": "4bcdee66-0a6f-44e6-b862-5447a804440d",
               "name": "List of all available icon codes",
               "originalRequest": {
                 "method": "GET",
@@ -396,14 +476,28 @@
           ]
         }
       ],
-      "id": "aa176c23-1911-4974-8e6a-b35de1099215"
+      "id": "a13ddcc2-b70f-4caf-8783-e2d201c453d8"
     },
     {
       "name": "display-summary",
       "item": [
         {
           "name": "Display Summary",
-          "id": "aa85551d-5fc8-4337-aa85-2120a9395f57",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "84f384eb-69ec-4d2c-8279-182490aa9454",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "b9bdf264-344f-4d62-bf1d-006f2d315afb",
           "request": {
             "method": "POST",
             "header": [
@@ -437,7 +531,7 @@
           },
           "response": [
             {
-              "id": "da49de4c-3763-446a-b2ad-b9c9f49a2a7c",
+              "id": "c9707a68-3737-47fc-b599-bc6ee6fd862f",
               "name": "Summary message displayed successfully",
               "originalRequest": {
                 "method": "POST",
@@ -511,14 +605,39 @@
           ]
         }
       ],
-      "id": "f8c23278-8a33-4ea1-86bc-33aee9a75b6f"
+      "id": "df56051f-d1f9-49c4-835b-748d451e9d17"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "dfcd91d3-f1c9-4d57-a0c4-7e69bfef239d",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "4babaa5f-30d4-4d3b-939b-ca73b192dbd7",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
     }
   ],
   "variable": [
     {
       "key": "baseUrl",
-      "value": "http://127.0.0.1:5001",
-      "type": "string"
+      "value": "https://5811e949-1247-477d-9014-fa8a91bb372e.mock.pstmn.io"
     }
   ]
 }

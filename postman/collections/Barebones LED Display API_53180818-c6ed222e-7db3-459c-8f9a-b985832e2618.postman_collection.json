@@ -12,20 +12,21 @@
         {
           "listen": "test",
           "script": {
+            "id": "6aa93e1e-e62e-4ced-8a73-91fb109dd459",
             "exec": [
-              ""
+              "const genericTests = pm.require('@postman-italy-769381/generic-tests');"
             ],
             "type": "text/javascript",
-            "packages": {},
-            "requests": {},
-            "id": "74ac502b-4f53-4515-a35a-08731b55f2bf"
+            "packages": {
+              "@postman-italy-769381/generic-tests": {
+                "id": "019d02b0-e334-7719-a6c4-d7a4801f02e2"
+              }
+            },
+            "requests": {}
           }
         }
       ],
-      "id": "ca7c4c7a-bb62-4976-99ce-d52909ec7434",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
+      "id": "023aa597-208e-4211-9bb6-fd5498e18f43",
       "request": {
         "auth": {
           "type": "noauth"
@@ -46,7 +47,6 @@
           "raw": "{\n  \"text\": \"Hello World! :HEART2:\"\n}",
           "options": {
             "raw": {
-              "headerFamily": "json",
               "language": "json"
             }
           }
@@ -59,12 +59,11 @@
           "path": [
             "display-text"
           ]
-        },
-        "description": "Updates the text and visual content displayed on the LED name badge. Accepts text and icon codes in the format :icon_name:.\n\n<img src=\"https://content.pstmn.io/05b1ef2c-9fd3-4f0e-8b2f-76998fb3f6e5/aW1hZ2UucG5n\" width=\"240\">"
+        }
       },
       "response": [
         {
-          "id": "9253da5a-96aa-4a42-b9cf-b9bcdd6bda49",
+          "id": "ac9e2378-40e9-45bb-855b-8a0c8d6c3f95",
           "name": "Success with Text + Heart Icon",
           "originalRequest": {
             "method": "POST",
@@ -83,7 +82,6 @@
               "raw": "{\n  \"text\": \"Hello World! :heart:\"\n}",
               "options": {
                 "raw": {
-                  "headerFamily": "json",
                   "language": "json"
                 }
               }
@@ -103,44 +101,34 @@
           "_postman_previewlanguage": "json",
           "header": [
             {
-              "description": {
-                "content": "",
-                "type": "text/plain"
-              },
               "key": "Server",
-              "value": "Werkzeug/3.1.5 Python/3.13.7"
+              "value": "Werkzeug/3.1.5 Python/3.13.7",
+              "disabled": false,
+              "description": ""
             },
             {
-              "description": {
-                "content": "",
-                "type": "text/plain"
-              },
               "key": "Date",
-              "value": "Mon, 19 Jan 2026 12:16:21 GMT"
+              "value": "Mon, 19 Jan 2026 12:16:21 GMT",
+              "disabled": false,
+              "description": ""
             },
             {
-              "description": {
-                "content": "",
-                "type": "text/plain"
-              },
               "key": "Content-Length",
-              "value": "65"
+              "value": "65",
+              "disabled": false,
+              "description": ""
             },
             {
-              "description": {
-                "content": "",
-                "type": "text/plain"
-              },
               "key": "Connection",
-              "value": "close"
+              "value": "close",
+              "disabled": false,
+              "description": ""
             },
             {
-              "description": {
-                "content": "",
-                "type": "text/plain"
-              },
               "key": "Content-Type",
-              "value": "application/json"
+              "value": "application/json",
+              "disabled": false,
+              "description": ""
             }
           ],
           "cookie": [],
@@ -148,7 +136,7 @@
           "body": "{\n    \"status\": \"Text displayed on LED\",\n    \"text\": \"Hello World! :heart:\"\n}"
         },
         {
-          "id": "aec2bbf1-06f2-4a6d-9035-9d3b52d53c74",
+          "id": "f1e704f7-6f2e-4423-ad79-1b6b8bd4c8a6",
           "name": "Failure HTML Response (Unicode)?",
           "originalRequest": {
             "method": "POST",
@@ -167,7 +155,6 @@
               "raw": "{\n  \"text\": \"Hello World! 🌍\"\n}",
               "options": {
                 "raw": {
-                  "headerFamily": "json",
                   "language": "json"
                 }
               }
@@ -188,39 +175,33 @@
           "header": [
             {
               "key": "Content-Type",
-              "value": "application/json"
+              "value": "application/json",
+              "disabled": false,
+              "description": ""
             },
             {
               "key": "Server",
               "value": "Werkzeug/3.1.4 Python/3.13.5",
-              "description": {
-                "content": "",
-                "type": "text/plain"
-              }
+              "disabled": false,
+              "description": ""
             },
             {
               "key": "Date",
               "value": "Mon, 19 Jan 2026 12:47:31 GMT",
-              "description": {
-                "content": "",
-                "type": "text/plain"
-              }
+              "disabled": false,
+              "description": ""
             },
             {
               "key": "Content-Length",
               "value": "69",
-              "description": {
-                "content": "",
-                "type": "text/plain"
-              }
+              "disabled": false,
+              "description": ""
             },
             {
               "key": "Connection",
               "value": "close",
-              "description": {
-                "content": "",
-                "type": "text/plain"
-              }
+              "disabled": false,
+              "description": ""
             }
           ],
           "cookie": [],
@@ -228,7 +209,7 @@
           "body": "{\n  \"details\": \"'🌍'\",\n  \"error\": \"Invalid display string format\"\n}"
         },
         {
-          "id": "ccb0d10c-baff-46e5-b6a1-0973433cf819",
+          "id": "d29b7de0-29f1-4085-a511-23501ffee3ca",
           "name": "Error when not started with right permissions",
           "originalRequest": {
             "method": "POST",
@@ -247,7 +228,6 @@
               "raw": "{\n  \"text\": \"Hello World!\"\n}",
               "options": {
                 "raw": {
-                  "headerFamily": "json",
                   "language": "json"
                 }
               }
@@ -264,43 +244,37 @@
           },
           "status": "Internal Server Error",
           "code": 500,
-          "_postman_previewlanguage": "Text",
+          "_postman_previewlanguage": "text",
           "header": [
             {
               "key": "Server",
               "value": "Werkzeug/3.1.4 Python/3.13.5",
-              "description": {
-                "content": "",
-                "type": "text/plain"
-              }
+              "disabled": false,
+              "description": ""
             },
             {
               "key": "Date",
               "value": "Mon, 19 Jan 2026 12:16:58 GMT",
-              "description": {
-                "content": "",
-                "type": "text/plain"
-              }
+              "disabled": false,
+              "description": ""
             },
             {
               "key": "Content-Length",
               "value": "265",
-              "description": {
-                "content": "",
-                "type": "text/plain"
-              }
+              "disabled": false,
+              "description": ""
             },
             {
               "key": "Connection",
               "value": "close",
-              "description": {
-                "content": "",
-                "type": "text/plain"
-              }
+              "disabled": false,
+              "description": ""
             },
             {
               "key": "Content-Type",
-              "value": "text/html; charset=utf-8"
+              "value": "text/html; charset=utf-8",
+              "disabled": false,
+              "description": ""
             }
           ],
           "cookie": [],
@@ -314,7 +288,7 @@
     {
       "key": "baseUrl",
       "value": "http://127.0.0.1:5001",
-      "type": "any"
+      "type": "string"
     }
   ]
 }
