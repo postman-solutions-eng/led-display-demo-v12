@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 
 def _process_and_write(text, command_queue=None, write_hardware=True):
-    """Create the scene buffer for `text` and either write to hardware,
+    """Create the scene buffer for `text` and either write to hardwaret,
     post to the mock console output via `command_queue`, or both depending on flags.
     """
     creator = SimpleTextAndIcons()
