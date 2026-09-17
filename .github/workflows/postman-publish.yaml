@@ -19,6 +19,7 @@ jobs:
     name: Publish Changes
     # Private runner not required here, but using it for cost-effectiveness. Switch to GH runners if load increases.
     runs-on: build9-arm-ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
